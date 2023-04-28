@@ -1,0 +1,14 @@
+package quiz0426;
+
+public class KORAIL {
+
+//	Stirng;
+
+	
+	int distance (int x , int y) { 
+	   
+		result = x + y;
+		
+		return result;
+};
+

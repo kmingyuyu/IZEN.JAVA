@@ -1,0 +1,19 @@
+package Quiz;
+
+public class q0427 {
+	 
+        static String name ;
+        static String id ;
+        static String password ;
+        static int age ;
+       
+  static {
+        String name = "이름" , id="아이디" , password="패스워드" ,
+        int age = 50 ; 
+         }
+
+
+}
+
+
+

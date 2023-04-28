@@ -1,0 +1,29 @@
+package Quiz;
+
+public class Nav {
+	static int severancePay; // 퇴직금
+	static int x;
+	static int y;
+	
+	
+   int pay (int x) {
+	   
+	   
+   }
+   
+   int pay (int x , int y) {
+	   
+	   int result = (1 );
+	   
+	   return result;
+   }
+	
+//퇴직금 산정공식은 '[(1일 평균임금 × 30일) × 총 계속근로기간] ÷ 365'입니다. 
+//여기서 평균임금이란 산정해야하는 사유가 발생한 날 이전 3개월 동안에 
+//해당 직원에게 지급된 임금의 총액을 그 기간의 총일수로 나눈 금액입니다.
+	
+
+	
+	
+
+}

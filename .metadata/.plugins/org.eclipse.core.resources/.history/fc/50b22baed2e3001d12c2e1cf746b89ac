@@ -1,0 +1,8 @@
+package ch06.sec08.exam01;
+
+public class Calculator {
+
+//	 필드: 있어도 없어도 상관없음
+//  생성자: 컴파일 과정에서 디폴트 생성자가 붙는다 -> Calculator(){}
+	
+}

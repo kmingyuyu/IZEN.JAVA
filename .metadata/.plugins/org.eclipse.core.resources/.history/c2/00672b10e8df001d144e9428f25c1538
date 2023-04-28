@@ -1,0 +1,11 @@
+package ch03.sec11;
+
+public class q1 {
+
+	
+		public static void main(String[] args) {
+		     int score = 0;
+		     char quiz = (score <= 1) ? '양수' :(scrore >= 1) ? '음수';
+		     System.out.println(q);
+		      }
+		}

@@ -1,0 +1,17 @@
+package ch05.sec07;
+
+public class MultidimensionalArrayByValueListExample {
+
+	public static void main(String[] args) {
+		
+		int[][] score = {
+				{80,90,96},{76,88}
+		};
+		
+		System.out.println("1차원 배열 길이 (반의 수):" + score.length); //{80,90,96},{76,88} => 총{}2개
+		System.err.println("2차원 배열 길이 (첫번쨰 반의 학생수" + score[0].length + "명");
+		System.err.println("2차원 배열 길이 (첫번쨰 반의 학생수" + score[1].length + "명");
+
+	}
+
+}

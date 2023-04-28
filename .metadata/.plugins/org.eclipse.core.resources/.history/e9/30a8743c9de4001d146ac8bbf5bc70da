@@ -1,0 +1,28 @@
+package quiz0426;
+
+public class KORAILS {
+
+	public static void main(String[] args) {
+		
+		KORAIL start = new KORAIL();
+		KORAIL time = new KORAIL();
+		
+		start.start(); //출발
+		
+		System.out.println("총시간" + start.totalTime +  "분");
+		
+		
+		int startime = time.time(1); //출발시간입력
+//		도착까지 남은시간 	
+		
+		start.timeSecond(startime); 
+//		도착까지 남은시간
+		
+		
+		
+			
+		
+
+	}
+
+}

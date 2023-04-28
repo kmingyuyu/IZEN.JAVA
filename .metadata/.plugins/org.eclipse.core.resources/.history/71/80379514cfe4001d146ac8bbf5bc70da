@@ -1,0 +1,20 @@
+package Quiz;
+
+public class Nav2 {
+
+	public static void main(String[] args) {
+		
+		 Nav time = new Nav();
+		 
+		 int monthday = 250;
+		 int monthtotal = 28;
+		 int totalday = 450;
+		 time.pay(monthday, monthtotal, totalday);
+		 
+		 System.err.println();
+			 
+		 
+		 
+		 
+	}
+}

@@ -1,0 +1,18 @@
+package Quiz;
+
+public class MemberService {
+
+	String id;
+	String password;
+
+	
+	
+	
+	boolean login(String x, String y) {
+		
+		boolean result = x="hong" y="12345";
+				
+		return result;
+	}
+
+}

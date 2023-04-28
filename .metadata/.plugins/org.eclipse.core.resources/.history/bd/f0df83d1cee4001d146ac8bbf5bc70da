@@ -1,0 +1,12 @@
+package Quiz;
+
+public class Nav2 {
+
+	public static void main(String[] args) {
+		
+		 Nav time = new Nav();
+		 
+		 
+		 
+	}
+}

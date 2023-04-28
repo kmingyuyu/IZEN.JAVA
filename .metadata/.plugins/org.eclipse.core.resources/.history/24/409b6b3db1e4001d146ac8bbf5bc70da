@@ -1,0 +1,5 @@
+package ch06.sec13.exam02.pakage2;
+
+class A { // default 같은 패키지내에서 접근가능
+      
+}

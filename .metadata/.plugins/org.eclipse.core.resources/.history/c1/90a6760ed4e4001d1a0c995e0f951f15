@@ -1,0 +1,24 @@
+package Quiz;
+
+public class Nav2 {
+
+	public static void main(String[] args) {
+		
+		 Nav time = new Nav();
+		 
+		 int dDayPay = time.pay(250, 28);
+		 int dayPaymonth = dDayPay*30;
+		 int dayCheck = time.pay2(dDayPay, 660);
+		 
+		 System.out.println("1일 평균임금 : " + dDayPay);
+		 System.out.println("한달 평균임금 : " + dayPaymonth);
+		 System.out.println("평균임금*총근로일수 : " + dayCheck);
+		 
+		 
+		 
+		 
+        			 
+		 
+		 
+	}
+}

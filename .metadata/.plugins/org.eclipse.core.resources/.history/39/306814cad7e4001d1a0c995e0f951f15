@@ -1,0 +1,28 @@
+package Quiz;
+
+public class Nav2 {
+
+	public static void main(String[] args) {
+		
+		 Nav time = new Nav();
+		 int x = 250;
+		 int y = 68;
+		 int z = 660;
+		 
+		 int dDayPay = time.pay(x, y);
+		 int dayPaymonth = dDayPay*30;
+		 int severancePay = time.pay2(dayPaymonth, 660);
+		 
+		 
+		 
+		 System.out.println("--------------");
+		 System.out.println("퇴직금 계산기");
+		 time.pay();
+		 System.out.println("-------------");
+		 System.out.println("1일 평균임금 : " + dDayPay);
+		 System.out.println("한달 평균임금 : " + dayPaymonth);
+     	 System.out.println("총 퇴직금 : " + severancePay);
+		 
+		 
+	}
+}

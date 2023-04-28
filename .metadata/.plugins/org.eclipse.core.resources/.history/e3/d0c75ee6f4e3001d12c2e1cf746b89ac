@@ -1,0 +1,41 @@
+package quiz0426;
+
+public class KORAIL {
+
+ int totalTime = 324  ;
+ int timeRestArea = 200 ; 
+ double totalDistance = 332.25 ;
+
+	
+	void start() {
+		System.out.println("출발");
+	}
+	
+	int time(int x) { //출발 지점에서 도착까지 남은시간
+		int result = this.totalTime - x;
+		System.out.println("도착까지 남은 시간 : " + result);
+		return result;
+	}
+	
+	void time () { //휴계소에서 도착까지 남은 시간
+		int result = this.timeRestArea - this.totalTime;
+		System.out.println("도착까지 남은 시간 : " + result);
+	}
+	
+	int timeSecond (int x) { //출발지점에서 휴계소도착까지 남은시간
+		int result = this.timeRestArea - x ;
+        System.out.println("");		
+		return result;
+	}
+	
+	
+//	double distance (int x)  {
+//		
+//    double result = this.totalDistance - x;
+//    System.out.println("도착까지 남은 거리 : " + result);
+//		return result;
+//	}
+}
+
+    
+
