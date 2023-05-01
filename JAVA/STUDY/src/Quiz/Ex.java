@@ -10,12 +10,11 @@ public class Ex {
 //	-매개변수 : String str ->검사할 문자열
 	
 	
-	public boolean isNumber(String str) {
+	public static boolean isNumber(String str) {
 		char check;
 		
-		if(str == null || str == "") {
-			return false;
-		}
+		if(str == null || str == "") return false;
+		
 			
 		else {
 			for(int i=0; i<str.length(); i++) {
@@ -34,12 +33,10 @@ public class Ex {
 
 public static void main(String[] args) {
 	
-	Ex ex = new Ex();
-	
-	String str = "";
-	System.out.println(str + "는 숫자입니까? " + ex.isNumber(str));
-	str = "1";
-	System.out.println(str + "는 숫자입니까? " + ex.isNumber(str));
+	String str = "123";
+	System.out.println(str + "는 숫자입니까? " + isNumber(str));
+	str = "1u";
+	System.out.println(str + "는 숫자입니까? " + isNumber(str));
 }
 }
 

@@ -14,14 +14,14 @@ public class Ex2 {
 	
 	int max(int[] arr) {
 		int max = 0;
-		if(arr == null || arr == 0) {
-			
-//			str == null || str == ""
+		if(arr == null || arr.length == 0) {
+			max = -99999;
+			return max;
 		}
 		
-		
 		for(int i=0; i<arr.length; i++) {
-			if(max >= arr[i]) {
+			if(max <= arr[i]) {
+				max=arr[i];
 			}
 		}	
 		return max;
