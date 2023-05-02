@@ -1,0 +1,19 @@
+package Quiz;
+
+public class q_07_7 {
+   public String name;
+   
+   public q_07_7(String name) {
+	   this.name = name;
+   }
+   
+   
+	
+	
+}
+
+
+public class child extends q_07_7 {
+
+	
+}

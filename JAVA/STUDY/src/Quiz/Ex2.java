@@ -14,6 +14,7 @@ public class Ex2 {
 	
 	int max(int[] arr) {
 		int max = 0;
+<<<<<<< HEAD
 		
 		
 		if(arr == null || arr.length == 0) {
@@ -33,6 +34,21 @@ public class Ex2 {
 	}
 	
 	
+=======
+		if(arr == null || arr.length == 0) {
+			max = -99999;
+			return max;
+		}
+		
+		for(int i=0; i<arr.length; i++) {
+			if(max <= arr[i]) {
+				max=arr[i];
+			}
+		}	
+		return max;
+		
+	} 
+>>>>>>> 3029035551f6e28c38d048343eecfe3ad55c4579
 
 	
 		public static void main(String[] args) {

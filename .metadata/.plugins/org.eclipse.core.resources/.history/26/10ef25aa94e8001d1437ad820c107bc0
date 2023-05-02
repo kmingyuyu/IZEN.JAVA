@@ -1,0 +1,10 @@
+package korail;
+
+public class ticketingMainBrowser {
+	
+ public static void main(String[] args) {
+	
+	 Ticketing ticket
+	 
+}
+}

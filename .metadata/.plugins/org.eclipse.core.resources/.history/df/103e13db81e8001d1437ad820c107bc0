@@ -1,0 +1,18 @@
+package customerproject;
+
+public class GoldCustomer extends Customer {
+    double saleRatio; // 할인률
+
+    public GoldCustomer(int customerID, String customerName) {
+    	super(customerID , customerName);
+    	
+    	super.getCustomerGrade = "GOLD";
+    }
+    
+    
+	@Override
+	public int calcPrice(int price) {
+		
+	}
+    
+}
