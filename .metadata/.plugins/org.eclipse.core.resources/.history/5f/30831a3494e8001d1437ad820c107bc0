@@ -1,0 +1,12 @@
+package korail;
+
+public class ticketing {
+    static int personinfo;
+	static String[] trainList = {"ktx" , "itx" , "새마을호" , "무궁화호"}  ;
+    static String[] Start_TRAIN = {"용산" , "광명" , "서울"} ;
+	final static String END_TRAIN = "부산";
+	static int startday;
+}
+
+ticketing(int personinfo , )
+
