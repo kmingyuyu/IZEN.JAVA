@@ -36,9 +36,9 @@ public static void main(String[] args) {
 	
 	Ex ex = new Ex();
 	
-	String str = "";
+	String str = "5";
 	System.out.println(str + "는 숫자입니까? " + ex.isNumber(str));
-	str = "1";
+	str = "1O";
 	System.out.println(str + "는 숫자입니까? " + ex.isNumber(str));
 }
 }

@@ -14,25 +14,31 @@ public class Ex2 {
 	
 	int max(int[] arr) {
 		int max = 0;
-		if(arr == null || arr == 0) {
+		
+		
+		if(arr == null || arr.length == 0) {
 			
-//			str == null || str == ""
-		}
+			
+			return max = -999999;}
 		
-		
-		for(int i=0; i<arr.length; i++) {
-			if(max >= arr[i]) {
-			}
-		}	
-		return max;
-		
-	} 
+	
+		else{
+			for(int i=0; i<arr.length; i++) {
+				if (max < arr[i]) {	
+					max = arr[i];
+					
+			}}		
+			return max;
+	}
+	}
+	
+	
 
 	
 		public static void main(String[] args) {
 			Ex2 ex2 = new Ex2();
 			
-			int[] data = { 3, 2, 9, 4, 7 };
+			int[] data = { 3, 2, 5, 4, 7 };
 			System.out.println(java.util.Arrays.toString(data));
 			System.out.println("최대값:" + ex2.max(data));
 			System.out.println("최대값:" + ex2.max(null));
