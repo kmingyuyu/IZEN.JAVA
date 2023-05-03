@@ -8,10 +8,11 @@ public class Ticketing {
 
 	private static Scanner scanner = new Scanner(System.in);
 	
+	
 	public static void main(String[] args) {
 		
 		System.out.println("----------------------------------------------------");
-		 System.out.println("-----------------------KORAIL-----------------------");
+		 System.out.println("-----------------------KTX 서울-----------------------");
 		 System.out.println("----------------------------------------------------");
 		 System.out.println("              1.발권하기 | 2.발권표 조회 ");
 		 System.out.println("----------------------------------------------------"); 
@@ -28,10 +29,6 @@ public class Ticketing {
 			
 			break;
 		}
-		 
-		 
-		 
-		 
 		 
 	}
 	public static void ticketing( ) {
@@ -50,30 +47,27 @@ public class Ticketing {
 		 System.out.println(" o | x ");
 		 char obstacle = scanner.next().charAt(0);
 		 
-		 System.out.println("열차를 선택하세요");
-		 System.out.println("1.ktx | 2.itx | 3.새마을호");
-		 int trainType = scanner.nextInt();
-		 
 		 System.out.println("좌석을 선택해주세요");
 		 seat(obstacle);
 		 int seat = scanner.nextInt();
 		 
-		 System.out.println("출발역을 입력해주세요.");
-		 startStation(trainType);
-		 int startStation = scanner.nextInt();
-		 
 		 System.out.println("도착역을 입력해주세요.");
-		 endstation(trainType);
+		 System.out.println("1.부산 | 2.여수 | 3.강릉 ");
 		 int endStation = scanner.nextInt();
 		 
 		 System.out.println("출발날짜를 입력해주세요");
+		 
 		 System.out.println("2023년/ 월 :");
 		 int startMonth = scanner.nextInt();
+		 
 		 System.out.println("2023년/ "+ startMonth +  "월 / 일 :");
 		 int startDay = scanner.nextInt();
 		 
+		 System.out.println("2023년/ "+ startMonth +  "월 / " + startDay + " 일 / 시 :");
+		 int startTime = scanner.nextInt();
+		 
 		 TicketingInfo Info = new TicketingInfo //입력받은값 보내기
-				 (adult , obstacle , trainType ,seat , startStation , endStation , startMonth, startDay);
+				 (adult , obstacle ,seat  , endStation , startMonth, startDay , startTime);
 		 
 		 System.out.println("------------------------------");
 		 System.out.println("입력하신 정보가 맞는지 확인해주세요");
@@ -81,7 +75,8 @@ public class Ticketing {
 		 TicketingInfo.totalinfo(); // 입력보낸값 불러오기
 		 System.out.println("------------------------------");
 		 System.out.println("------------------------------");
-		 System.out.println("--------예매하시겠습니까?----------");
+		 System.out.println("-------결제 하시겠습니까?---------");
+		 System.out.println("결제 금액 : ");
 		 System.out.println("----   예매가 완료되었습니다!   ----");
 		 System.out.println("------------------------------");
 	}
@@ -97,16 +92,7 @@ public class Ticketing {
 	   		System.out.println("1.일반석 | 2.특별석");
 	   	  } 
   }
-	 public static void startStation (int trainType) {
-		   if(trainType == 1) {System.out.println("1.서울");}
-		   if(trainType == 2) {System.out.println("1.서울 | 2.용산 ");}
-		   if(trainType == 3) {System.out.println("1.서울 | 2.용산 | 3.광명 ");}
-	   }
-	 public static void endstation (int trainType) {
-		 if(trainType == 1) {System.out.println("1.부산");}
-		 if(trainType == 2) {System.out.println("1.부산 | 2.강릉 ");}
-		 if(trainType == 3) {System.out.println("1.부산 | 2.강릉 | 3.춘천 ");}
-	 }
+	
 
 	
 	
