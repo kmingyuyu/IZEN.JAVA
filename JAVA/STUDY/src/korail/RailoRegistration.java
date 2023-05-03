@@ -9,11 +9,19 @@ public class RailoRegistration {
    static int startDay; // 출발 일
    
    static int finalDay; // 도착 일
+   static int price; // 가격
+   
+   final static int PASSDAY_SEVEN = 120000;
+   final static int PASSDAY_THREE = 90000;
+  
    
    static String[] passDayList = {"7일권","3일권"}; //출발지 종류
    static String[] startlist = {"서울","용산","광명"}; //출발지 종류
    
-   RailoRegistration(int passDay, int headCount, char obstacle, int startstation, int startMonth, int startDay) {
+   RailoRegistration(){}
+   
+   
+   RailoRegistration(int passDay, int headCount, char obstacle, int startStation, int startMonth, int startDay) {
 	   this.passDay = passDay;
 	   this.headCount = headCount;
 	   this.obstacle = obstacle;
@@ -21,6 +29,10 @@ public class RailoRegistration {
 	   this.startMonth = startMonth;
 	   this.startDay = startDay;
    }
+   
+   
+   
+   
    
    public static void totalRailo() {
 	   System.out.println("패스권 : " + passDayList[passDay-1] );
@@ -31,17 +43,33 @@ public class RailoRegistration {
 	   System.out.println(" ~ ");
 	   System.out.println("2023 - "+  + startMonth + " - " + finalDay() );
    }
-  
    
+   
+   
+   
+public int price() {
+	if(passDay == 1) {
+		this.price = Price.PASSDAY_SEVEN;
+		
+	}
+	else if(passDay == 2) {
+		this.price = Price.PASSDAY_THREE;
+		
+	}return price;
+}
+
+
+
+	//  선택한 패스권종류에따라 끝나는날 계산
     private static int finalDay() {
-    	if(passDay == 0) {
-    		finalDay = startDay + 7;}
     	if(passDay == 1) {
+    		finalDay = startDay + 7;}
+    	if(passDay == 2) {
     		finalDay = startDay + 3;}
 	return finalDay;
 }
 
-
+// 게터 세터
 public static int getPassDay() {
 	return passDay;
 }

@@ -1,127 +1,108 @@
 package korail;
 
-public class Ticketinginfo {
-   static int adult; //어른 수
-   static int child; // 어린이 수
-   static char obstacle; //장애인원 여부
-   static int traintype; // 열차선택
+public class Ticketinginfo  {
+   static int passId; // 패스권 아이디
+   static int trainType; // 열차선택
    static int seat; //좌석
-   static int startstation; //출발역 선택
-   static int endstation; //도착역 선택
-   static int startmonth; //출발 월 선택
-   static int startday; //출발 일 선택
+   static int endStation; //도착역 선택
+   static int startMonth; //출발 월 선택
+   static int startDay; //출발 일 선택
+   
+  
    
    static String[] trainlist = {"ktx","itx","새마을호"}; // 열차종류
    static String[] seatlist = {"일반석","특별석","장애특별석"}; //좌석종류
-   static String[] startlist = {"서울","용산","광명"}; //출발지 종류
    static String[] endtlist = {"부산","강릉","춘천"}; //도착지 종류
    
-   Ticketinginfo(int adult, int child, char obstacle, int traintype, int seat,
-		         int startstation, int endstation, int startmonth, int startday) {
-	   this.adult = adult;
-	   this.child = child;
-	   this.obstacle = obstacle;
+   
+   
+   Ticketinginfo
+   (int passId , int trainType, int seat, int endStation, int startMonth, int startDay) {
+       this.passId = passId;	   
+	   this.trainType = trainType;
 	   this.seat = seat;
-	   this.traintype = traintype;
-       this.startstation = startstation;
-	   this.endstation = endstation;
-	   this.startmonth = startmonth;
-	   this.startday = startday;
+	   this.endStation = endStation;
+	   this.startMonth = startMonth;
+	   this.startDay = startDay;
   }
    
    
    
 	   
 	public static void totalinfo() {
-		System.out.println("성인:" + adult + "명 " + "어린이:" + child +  "명 " + " 장애인원 여부:" + obstacle );
-		System.out.println("열차:" + trainlist[traintype+1]);
-		System.out.println("좌석:" + seatlist[seat+1] );
-		System.out.println("출발역:" + startlist[startstation+1] );
-		System.out.println("도착역:" + endtlist[endstation+1] );
-		System.out.println("시작일: 2023 - " + startmonth + " - " + startday );
-		System.out.println("출발날짜: 2023 - " + startmonth + " - " + startday );
+		System.out.println("패스권 번호 : " + passId);
+		System.out.println("열차:" + trainlist[trainType-=1]);
+		System.out.println("좌석:" + seatlist[seat-=1] );
+		System.out.println("도착역:" + endtlist[endStation-=1] );
+		System.out.println("출발일: 2023 - " + startMonth + " - " + startDay );
 		
-	} 
-   
-   
-   
-   
+	}
+	
+	
+	
+	
+	
 
-	public static int getAdult() {
-		return adult;
+	
+
+
+
+	
+	public void price() {
+		
 	}
 
-	public static void setAdult(int adult) {
-		Ticketinginfo.adult = adult;
+
+
+
+	public static int getPassId() {
+		return passId;
 	}
 
-	public static int getChild() {
-		return child;
+	public static void setPassId(int passId) {
+		Ticketinginfo.passId = passId;
 	}
 
-	public static void setChild(int child) {
-		Ticketinginfo.child = child;
+	public static int getTrainType() {
+		return trainType;
 	}
 
-	public static char getObstacle() {
-		return obstacle;
+	public static void setTrainType(int trainType) {
+		Ticketinginfo.trainType = trainType;
 	}
-
-	public static void setObstacle(char obstacle) {
-		Ticketinginfo.obstacle = obstacle;
-	}
-
-	public static int getTraintype() {
-		return traintype;
-	}
-
-	public static void setTraintype(int traintype) {
-		Ticketinginfo.traintype = traintype;
-	}
-
-	public static int getStartstation() {
-		return startstation;
-	}
-
-	public static void setStartstation(int startstation) {
-		Ticketinginfo.startstation = startstation;
-	}
-
-	public static int getEndstation() {
-		return endstation;
-	}
-
-	public static void setEndstation(int endstation) {
-		Ticketinginfo.endstation = endstation;
-	}
-
-	public static int getStartmonth() {
-		return startmonth;
-	}
-
-	public static void setStartmonth(int startmonth) {
-		Ticketinginfo.startmonth = startmonth;
-	}
-
-	public static int getStartday() {
-		return startday;
-	}
-
-	public static void setStartday(int startday) {
-		Ticketinginfo.startday = startday;
-	}
-
 
 	public static int getSeat() {
 		return seat;
 	}
 
-
 	public static void setSeat(int seat) {
 		Ticketinginfo.seat = seat;
 	}
 
+	public static int getEndStation() {
+		return endStation;
+	}
 
+	public static void setEndStation(int endStation) {
+		Ticketinginfo.endStation = endStation;
+	}
+
+	public static int getStartMonth() {
+		return startMonth;
+	}
+
+	public static void setStartMonth(int startMonth) {
+		Ticketinginfo.startMonth = startMonth;
+	}
+
+	public static int getStartDay() {
+		return startDay;
+	}
+
+	public static void setStartDay(int startDay) {
+		Ticketinginfo.startDay = startDay;
+	} 
+	
 
 
 

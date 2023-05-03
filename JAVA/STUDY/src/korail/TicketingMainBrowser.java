@@ -64,7 +64,7 @@ public class TicketingMainBrowser {
 	 
 	 System.out.println("출발역을 입력해주세요");
 	 System.out.println("1.서울 | 2.용산 | 3.광명");
-	 int startstation = scanner.nextInt();
+	 int startStation = scanner.nextInt();
 	 
 	 System.out.println("출발날짜를 입력해주세요");
 	 System.out.println("2023년/ 월 :");
@@ -72,11 +72,16 @@ public class TicketingMainBrowser {
 	 System.out.println("2023년/ "+ startMonth +  "월 / 일 :");
 	 int startDay = scanner.nextInt();
 	 RailoRegistration registration = new RailoRegistration
-			 (passDay , headCount , obstacle , startstation , startMonth , startDay);
+			 (passDay , headCount , obstacle , startStation , startMonth , startDay);
 	 System.out.println("------------------------------");
 	 System.out.println("입력하신 정보가 맞는지 확인해주세요");
 	 registration.totalRailo();
 	 System.out.println("------------------------------");
+	 System.out.println("결제 하시겠습니까?");
+	 System.out.println("결제 금액 : " + registration.price() );
+	 System.out.println("------------------------------");
+	 System.out.println("결제가 완료 되었습니다. 패스권 생성 완료!");
+	 
  }
  
  
@@ -91,6 +96,8 @@ public class TicketingMainBrowser {
  
 
 public static void ticketing( ) {
+	
+	RailoRegistration railoRegistration = new RailoRegistration();
 	 
 	 System.out.println("-------------------");
 	 System.out.println("<발권하기>");
@@ -98,30 +105,29 @@ public static void ticketing( ) {
 	 System.out.println("-------------------");
 	 
 	 
+	 System.out.println("패스권 번호를 입력해주세요");
+	 int passId = scanner.nextInt();
+	 
 	 System.out.println("열차를 선택하세요");
 	 System.out.println("1.ktx | 2.itx | 3.새마을호");
-	 int traintype = scanner.nextInt();
+	 int trainType = scanner.nextInt();
 	 
 	 System.out.println("좌석을 선택해주세요");
-	 seat(obstacle);
+	 seat(railoRegistration.obstacle);
 	 int seat = scanner.nextInt();
 	 
-	 System.out.println("출발역을 입력해주세요");
-	 startstation(traintype);
-	 int startstation = scanner.nextInt();
-	 
 	 System.out.println("도착역을 입력해주세요.");
-	 endstation(startstation);
-	 int endstation = scanner.nextInt();
+	 endstation(trainType);
+	 int endStation = scanner.nextInt();
 	 
 	 System.out.println("출발날짜를 입력해주세요");
 	 System.out.println("2023년/ 월 :");
-	 int startmonth = scanner.nextInt();
-	 System.out.println("2023년/ "+ startmonth +  "월 / 일 :");
-	 int startday = scanner.nextInt();
+	 int startMonth = scanner.nextInt();
+	 System.out.println("2023년/ "+ startMonth +  "월 / 일 :");
+	 int startDay = scanner.nextInt();
 	 
-	 Ticketinginfo ticketinginfo = new Ticketinginfo(adult, child , obstacle, traintype , seat , startstation , 
-			 endstation, startmonth, startday );
+	 Ticketinginfo ticketinginfo = new Ticketinginfo
+			 (passId, trainType , seat, endStation , startMonth, startDay );
 	 
 	 System.out.println("------------------------------");
 	 System.out.println("입력하신 정보가 맞는지 확인해주세요");
@@ -139,16 +145,11 @@ public static void ticketing( ) {
 	   	  } 
    }
  
-   public static void startstation (int traintype) {
-	   if(traintype == 1) {System.out.println("1.서울");}
-	   if(traintype == 2) {System.out.println("1.서울 | 2.용산");}
-	   if(traintype == 3) {System.out.println("1.서울 | 2.용산 | 3.광명");}
-   }
    
-   public static void endstation (int traintype) {
-	   if(traintype == 1) {System.out.println("1.부산");}
-	   if(traintype == 2) {System.out.println("1.부산 | 2.강릉 ");}
-	   if(traintype == 3) {System.out.println("1.부산 | 2.강릉 | 3.춘천 ");}
+   public static void endstation (int trainType) {
+	   if(trainType == 1) {System.out.println("1.부산");}
+	   if(trainType == 2) {System.out.println("1.부산 | 2.강릉 ");}
+	   if(trainType == 3) {System.out.println("1.부산 | 2.강릉 | 3.춘천 ");}
    }
    
    
