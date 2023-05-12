@@ -11,7 +11,7 @@ public class Ticketing {
 	
 	public static void main(String[] args) {
 		
-		System.out.println("----------------------------------------------------");
+		 System.out.println("----------------------------------------------------");
 		 System.out.println("-----------------------KTX 서울-----------------------");
 		 System.out.println("----------------------------------------------------");
 		 System.out.println("              1.발권하기 | 2.발권표 조회 ");

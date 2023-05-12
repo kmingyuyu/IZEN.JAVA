@@ -6,7 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="synchro"/>
 		<list key="findhistory">
+			<item value="synchro"/>
+			<item value="sy"/>
+			<item value="Sy"/>
+			<item value="append"/>
 		</list>
 		<list key="replacehistory">
 		</list>
