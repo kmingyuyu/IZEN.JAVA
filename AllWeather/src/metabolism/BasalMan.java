@@ -12,6 +12,7 @@ public class BasalMan implements Basal{
 	}
 
 
+
 	
 	
 

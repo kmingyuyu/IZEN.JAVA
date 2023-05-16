@@ -14,93 +14,45 @@ public class HealthMainBuild {
 	
     static int BMR;
     static int AMR;
+    static int BMI;
+    static String grade;
     
-    
-    public final static String TITLE = "-----------------기초/활동대사량 계산기-------------------\n";
+    public final static String TITLE = "-----------------기초/활동대사량 계산기--------------------\n";
     public final static String LINE = "-----------------------------------------------------\n";
     StringBuilder build = new StringBuilder(); 
     
-    
-	
 
- public static void humanInfo() {
-//     사람 이름/성별/운동강도 등록
-	 Human human1 = new Human("kim" , "남성" , Define.MEN , "거의운동X" , Define.TUTORIAL);
-	 Human human2 = new Human("park" , "남성"  ,Define.MEN , "가벼운 운동 (주 1-3)" ,Define.NORMAL);
-	 Human human3 = new Human("li" , "남성" ,  Define.MEN , "적극적 운동 (주 6-7)" , Define.HARD);
-	 
-	 Human human4 = new Human("yun" , "여성" , Define.WOMEN , "가벼운 운동 (주 1-3)" , Define.EASY);
-	 Human human5 = new Human("kang" , "여성" , Define.WOMEN , "적극적 운동 (주 6-7)" , Define.HARD);
-	 Human human6 = new Human("hwa" , "여성" ,Define.WOMEN , "보통 수준(주 3-5)" , Define.NORMAL);
-	 
-//	   사람마다 키/몸무게/나이 등록
-	 human1.inputStatList(new Stat(170 , 65 , 25));
-	 human2.inputStatList(new Stat(178 , 88 , 20));
-	 human3.inputStatList(new Stat(180 , 100 , 30));
-	 
-	 human4.inputStatList(new Stat(158 , 50 , 25));
-	 human5.inputStatList(new Stat(165 , 65 , 22));
-	 human6.inputStatList(new Stat(160 , 52 , 30));
-	 
-//	   싱글톤에 human 1~6 등록
-	 total.inputHumanList(human1);
-	 total.inputHumanList(human2);
-	 total.inputHumanList(human3);
-	 total.inputHumanList(human4);
-	 total.inputHumanList(human5);
-	 total.inputHumanList(human6);
-	 
- }
- 
- public static void main(String[] args) {	
-	 HealthMainBuild test = new HealthMainBuild();
-	 String ts = test.browser();
-	 System.out.println(ts);
-	 
- }
+//   출력하는 메소드
  public String browser () {
+	 build.append(HealthMainBuild.LINE);
 	 build.append(HealthMainBuild.TITLE);
-	 humanInfo();
 	 ArrayList<Human> humanlist = total.getHumanList();
 	 for(Human human : humanlist) {
 		 body(human);
-//		 mathBMR(human);
-//		 mathAMR(human , BMR);
-		 
-	 }
-	 
+		 mathBMR(human);
+		 mathAMR(human,BMR);
+		 }
+	 build.append(HealthMainBuild.LINE);
 	 return build.toString();
 	 }
  
- 
+//  몸통 메소드
  public void body (Human human) {
 	 build.append(HealthMainBuild.LINE);
-	 build.append("             " + human.getName());
+	 build.append("                  " + human.getName());
 	 build.append(" 님 프로필 \n ");
-	 build.append(" | 성별 : ");
-	 build.append(human.getGender());
-	 build.append(" | 운동강도 : ");
-	 build.append(human.getExercise());
-	 build.append(" | \n");
-	 
-	 
+	 build.append(" 성별 : " + human.getGender());
+	 build.append(" | 운동강도 : " + human.getExercise());
  }
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
-// 기초 대사량 측정  
- public static void mathBMR(Human human) {
+// 기초 대사량 측정 메소드
+ public void mathBMR(Human human) {
 	 ArrayList<Stat> statList = human.getStatList();
 	 for(int i=0; i<statList.size(); i++) {
 		 Stat stat = statList.get(i);
+		 
+		 mathBMI(stat);
 		 
 		 if(human.getGenderCode() == Define.MEN) {
 			 Basal metabolism = new BasalMan();
@@ -110,20 +62,37 @@ public class HealthMainBuild {
 			 Basal metabolism = new BasalWoman();
 			 BMR =  metabolism.BMR(stat.getHeight(), stat.getWeight(), stat.getAge());
 		 }
-		 
+		 build.append("    | 키 : " + stat.getHeight());
+		 build.append(" | 몸무게 : " + stat.getWeight());
+		 build.append(" | 나이 : " + stat.getAge());
+		 build.append("\n");
+		 build.append("  기초 대사량 :  " + BMR);
+		 build.append("  | 활동 대사량 : " + AMR);
+		 build.append("  | 체지방율 :  " + BMI + "       " + grade);
+		 build.append("\n");
 	 }
-	 	
  }
  
- // 운동 대사량 측정
- public static void mathAMR(Human human , int BMR) {
+ 
+ // 활동 대사량 측정 메소드
+ public void mathAMR(Human human , int BMR) {
 	 BasalExercise basalExercise = new BasalExercise();
 	 AMR = basalExercise.AMR(human.getExerciseCode(), BMR);
-	 
+	
+ 	}
+ 
+// 체지방율 계산 메소드
+ public void mathBMI(Stat stat) {
+	 BodyMassIndex bmi = new BodyMassIndex();
+	 BMI = bmi.BMI(stat.getHeight(), stat.getWeight());
+	 grade = bmi.gradeBMI(BMI);
  }
  
  
+ 
  }
+
+
  
  
 

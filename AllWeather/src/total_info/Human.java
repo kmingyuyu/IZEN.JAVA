@@ -25,6 +25,12 @@ public class Human {
 	   statList.add(stat);
    }
 
+   
+   
+   
+   
+   
+// get/set
 public String getName() {
 	return name;
 }
@@ -75,7 +81,6 @@ public void setStatList(ArrayList<Stat> statList) {
 
    
    
-// get/set
 
    
    

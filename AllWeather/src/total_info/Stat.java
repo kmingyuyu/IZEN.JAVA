@@ -14,26 +14,7 @@ public class Stat {
    }
    
    
-   
-   
-   
-   
-   
 // get/set
-
-
-
-
-@Override
-public String toString() {
-	return "키:" + this.height + "," + "몸무게 : " + this.weight + "," + "나이 :" + this.age ;
-}
-
-
-
-
-
-
 
 public int getWeight() {
 	return weight;
