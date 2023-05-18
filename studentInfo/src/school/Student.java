@@ -3,27 +3,24 @@ package school;
 import java.util.ArrayList;
 
 public class Student {
-     //필드
-	private int studentId ; // 학번
-	private String studentName ; // 이름
-	private Subject majorSubject ; // 필수과목
+	private int studentId; //학번
+	private String studentName; //이름
+	private Subject majorSubject; //필수과목
+	//addSubjectScore() 메소드가 호출되면 이 리스트에 추가됨 
+	private ArrayList<Score> scoreList = new ArrayList<Score>(); //학생이 수강한 과목의 점수 리스트
 	
-	private ArrayList<Score> scoreList = new ArrayList<> (); //학생이 수강한 과목의 점수 리스트
-	
-	
-	public Student(int studentId , String studentName , Subject majorSubject ) {
+	public Student(int studentId, String studentName, Subject majorSubject) {
 		this.studentId = studentId;
 		this.studentName = studentName;
 		this.majorSubject = majorSubject;
 	}
 	
-	//학생이 수강한 과목에 점수 추가 메소드
 	public void addSubjectScore(Score score) {
 		scoreList.add(score);
 	}
-
 	
-//	get/set
+	//getter, setter 메소드
+	
 	public int getStudentId() {
 		return studentId;
 	}
@@ -55,8 +52,5 @@ public class Student {
 	public void setScoreList(ArrayList<Score> scoreList) {
 		this.scoreList = scoreList;
 	}
-	
-	
-	
 	
 }
