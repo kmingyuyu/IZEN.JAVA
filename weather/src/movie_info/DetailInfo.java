@@ -18,6 +18,54 @@ public class DetailInfo {
 
 
 
+	public double getReservationRate() {
+		return reservationRate;
+	}
+
+
+
+	public void setReservationRate(double reservationRate) {
+		this.reservationRate = reservationRate;
+	}
+
+
+
+	public int getRunningTime() {
+		return runningTime;
+	}
+
+
+
+	public void setRunningTime(int runningTime) {
+		this.runningTime = runningTime;
+	}
+
+
+
+	public int getOpeningdate() {
+		return openingdate;
+	}
+
+
+
+	public void setOpeningdate(int openingdate) {
+		this.openingdate = openingdate;
+	}
+
+
+
+	public int getAgeGroup() {
+		return ageGroup;
+	}
+
+
+
+	public void setAgeGroup(int ageGroup) {
+		this.ageGroup = ageGroup;
+	}
+
+
+
 	
 	
 //	get /set
