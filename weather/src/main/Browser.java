@@ -2,22 +2,30 @@ package main;
 
 
 import java.time.*;
-
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.regex.Pattern;
 
 import movie_info.*;
 
 public class Browser {
 
+	Scanner scanner = new Scanner(System.in);
+	
+	
 	public static void main(String[] args) {
 
-		Browser B = new Browser();
-		B.inputInfo();
-		
-					
-		
+		Browser test = new Browser();
+		test.inputInfo();
+		test.mainView();
 		
 		
 	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -35,7 +43,7 @@ public class Browser {
 	DefaultInfo defaultInfo3 = new DefaultInfo("범죄도시3" , "범죄,액션" , "한국");
 	DetailInfo detailInfo3 = new DetailInfo(40.5 , 105 , LocalDate.of(2023,05,31) , 15);
 	
-	 inputCalender(detailInfo1);
+	 inputCalender(detailInfo3);
 	
 	
 	
@@ -46,46 +54,204 @@ public class Browser {
 		LocalDate n = LocalDate.now();
 		LocalTime t = LocalTime.of(00, 00);
 		LocalDateTime nt =  LocalDateTime.of(n,t);
+		String pattern = "yyyy-MM-dd HH:mm:ss";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
 		
 		if(detailInfo.getOpeningdate().isBefore(n)){
-			LocalDateTime[] movieSchedule = {
-//					당일날 예매시간표
-					nt.plusHours(12).plusMinutes(30),
-					nt.plusHours(15).plusMinutes(00),
-					nt.plusHours(18).plusMinutes(20),
-//					당일+1 날 예매 시간표
-					nt.plusDays(1).plusHours(10).plusMinutes(0),
-					nt.plusDays(1).plusHours(13).plusMinutes(0),
-					nt.plusDays(1).plusHours(16).plusMinutes(0),
-					nt.plusDays(1).plusHours(19).plusMinutes(30),
-//					당일+2 날 예매 시간표
-					nt.plusDays(2).plusHours(10).plusMinutes(0),
-					nt.plusDays(2).plusHours(16).plusMinutes(0),
-					nt.plusDays(2).plusHours(20).plusMinutes(40)};
-			
-			
-			
-			
-		}else{
-			System.out.print(detailInfo.getOpeningdate() + "\n" + 
-		                     detailInfo.getOpeningdate().compareTo(n) +"-DAY" +" 대개봉!");
-		}; 
-		
-		
-		
-		
-		
-		
-		
-	
-	
-		
-	
-	
-	
-	
+				LocalDateTime[] movieSchedule = {
+//						당일날 예매시간표
+						nt.plusHours(10).plusMinutes(30),
+						nt.plusHours(18).plusMinutes(20),
+//						당일+1 날 예매 시간표
+						nt.plusDays(1).plusHours(9).plusMinutes(0),
+						nt.plusDays(1).plusHours(13).plusMinutes(0),
+						nt.plusDays(1).plusHours(16).plusMinutes(0),
+						nt.plusDays(1).plusHours(19).plusMinutes(30)};		
+				
+				detailInfo.setMovieSchedule(movieSchedule);
+		}
 	
 	}
-}
 	
-
+	
+	
+	int mainView() {
+		int menu = 0;
+		while(true) {
+			switch (menu) {
+			case 0:
+				menu = browser();
+				break;
+			case 1:
+				menu = join();
+				break;
+			case 2:
+				menu = browser();
+				break;
+			case 3:
+				menu = browser();
+				break;
+			case 4:
+				menu = browser();
+				break;
+				}
+			}
+		}
+			
+	
+	public int browser () {
+		while (true) {
+			System.out.println("--------------------------------------------------");
+			System.out.println("------------안녕하세요 cgv 인천점 입니다!---------------");
+			System.out.println("--------------------------------------------------");
+			System.out.println("-----------------서비스를 선택해주세요------------------");
+			System.out.println("---------------|1> 회원가입|2> 로그인|----------------");
+			System.out.println("-----------|3> 상영중인 영화|4> 영화 예매하기|-----------");
+			System.out.println("-------------------|5> 나가기|----------------------");
+			
+			String menu = scanner.next();
+			
+			switch (menu) {
+			case "1": {
+				return 1;
+			}
+			case "2": {
+				
+			}
+			case "3": {
+				
+			}
+			case "4": {
+				
+			}
+			case "5": {
+				System.out.println("이용해 주셔서 감사합니다");
+				return 5;
+				 
+			}
+			default : {
+				System.out.println("잘못 입력하셨습니다");
+			}
+			
+		}
+		}
+	}
+	
+	public int join() {
+		while(true) {
+			System.out.println("|1> 이미 회원이십니까? ( 로그인 창으로 이동 )");
+			System.out.println("|2> 메인 화면으로 이동");
+			System.out.println("아니라면 아무키나 입력해주세요.");
+			String j_Check = scanner.next();
+			if(j_Check.equals("1")) {
+				return 2;
+			}else if(j_Check.equals("2")) {
+				return 0;
+			}
+			System.out.println("----------------------회원가입----------------------");
+			System.out.println("--------------환영합니다! 정보를 입력해주세요-------------");
+			System.out.println("사용하실 아이디를 입력 해주세요. (영소문자 6자리 이상 12이내)");
+			String member_ID = scanner.next();
+			while(true) {
+				if(!Pattern.matches("^[a-z]{6,12}$" , member_ID)) {
+					System.out.println("양식에 맞지 않습니다. 다시 입력해주세요");
+					System.out.println("* 영소문자 6자리 이상 12이내 *");
+					member_ID = scanner.next();
+				}else {
+					System.out.println("사용하실수 있는 ID 입니다.");
+					break;
+				}
+			};
+			System.out.println("사용하실 비밀번호를 입력 해주세요. (영소문자 숫자포함 8자리 이상 14자리 이내)");
+			String member_Password = scanner.next();
+			while(true) {
+				if(!Pattern.matches("^[a-z0-9]{8,14}$" , member_Password)) {
+					System.out.println("양식에 맞지 않습니다. 다시 입력해주세요");
+					System.out.println("* 영소문자 숫자포함 8자리 이상 14자리 이내 *");
+					member_Password = scanner.next();
+				}else {
+					System.out.println("사용하실수 있는 비밀번호 입니다.");
+					break;
+				}
+			}
+					System.out.println("비밀번호를 한번더 입력해주세요.");
+			String member_Password_Check = scanner.next();
+			while(true) {
+				if(!member_Password.equals(member_Password_Check)) {
+					System.out.println("비밀번호가 서로 맞지 않습니다. 다시 입력해주세요");
+					member_Password_Check = scanner.next();
+				}else {
+					System.out.println("비밀번호 확인 되었습니다.");
+					break;
+				}
+			}
+			System.out.println("이름을 입력해주세요. ( 한글 )");
+			String member_Name = scanner.next();
+			while(true) {
+				if(!Pattern.matches("^[가-힣]*$" , member_Name)) {
+					System.out.println("양식에 맞지 않습니다. 다시 입력해주세요");
+					System.out.println("* 한글이름 입력해주세요. *");
+					member_Name = scanner.next();
+				}else {
+					break;
+				}
+			}
+			System.out.println("주민번호 앞자리를 입력해주세요. ( 6자리 )");
+			String member_RRN = scanner.next();
+			while(true) {
+				if(!Pattern.matches("^[0-9]{6}$" , member_RRN)) {
+					System.out.println("양식에 맞지 않습니다. 다시 입력해주세요");
+					System.out.println("* 주민번호 앞 6자리 입력해주세요. *");
+					member_RRN = scanner.next();
+				}else {
+					break;
+				}
+			}
+			System.out.println("핸드폰 번호를 입력해주세요. ( '-' 제외 )");
+			String member_PhoneNumber = scanner.next();
+			while(true) {
+				if(!Pattern.matches("^[\\d]{11}+$" , member_PhoneNumber)) {
+					System.out.println("양식에 맞지 않습니다. 다시 입력해주세요");
+					System.out.println("* 핸드폰 번호를 입력해주세요. '-' 제외 *");
+					member_RRN = scanner.next();
+				}else {
+					break;
+				}			
+			}
+			
+			int r_Num = ((int) (Math.random()*9999)+1111);
+			
+			System.out.println("인증 번호가 전송 되었습니다. 인증번호를 입력해주세요");
+			System.out.println("인증번호 : " + r_Num);
+			int r_Num_Input = scanner.nextInt();
+			while(true) {
+				if(r_Num != r_Num_Input) {
+					System.out.println("인증번호가 맞지 않습니다. 다시 입력해주세요");
+					r_Num_Input = scanner.nextInt();
+				}else {
+					System.out.println("인증완료 되었습니다 감사합니다");
+					break;
+				}			
+			}
+			
+			System.out.println("양식 작성이 완료 되었습니다!");
+			System.out.println("회원가입 하시곗습니까? ( y/n )");
+			String join_Check = scanner.next();
+			while(true) {
+				if(!(join_Check.equals("n")||join_Check.equals("N")||join_Check.equals("y")||join_Check.equals("Y")))	{
+					System.out.println(" y/n 으로 입력해주세요 ");
+					r_Num_Input = scanner.nextInt();
+				}else if(join_Check.equals("n")||join_Check.equals("N")) {
+					System.out.println("초기화면으로 이동합니다");
+					return 1;
+				}
+				else if(join_Check.equals("y")||join_Check.equals("Y")) {
+					System.out.println("--------------------회원가입이 완료되었습니다!----------------------");
+					break;
+				}		
+			}
+	
+	
+}
+}
+	}

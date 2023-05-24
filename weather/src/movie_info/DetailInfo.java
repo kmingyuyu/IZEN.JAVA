@@ -8,7 +8,7 @@ public class DetailInfo {
 	private LocalDate openingdate; //개봉날짜
 	private int ageGroup; // 연령
 	
-	private LocalDateTime[] movieSchedule;  
+	private LocalDateTime[] movieSchedule; // 영화예매시간
 	
 	public DetailInfo (double reservationRate ,int runningTime ,LocalDate openingdate ,int ageGroup) {
 		this.reservationRate = reservationRate;
