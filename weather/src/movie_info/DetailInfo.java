@@ -1,20 +1,38 @@
 package movie_info;
 
+import java.time.*;
+
 public class DetailInfo {
 	private double reservationRate ; // 예매율
 	private int runningTime; //상영 시간
-	private int openingdate; //개봉날짜
+	private LocalDate openingdate; //개봉날짜
 	private int ageGroup; // 연령
 	
+	private LocalDateTime[] movieSchedule;  
 	
-	
-	public DetailInfo (double reservationRate ,int runningTime ,int openingdate ,int ageGroup) {
+	public DetailInfo (double reservationRate ,int runningTime ,LocalDate openingdate ,int ageGroup) {
 		this.reservationRate = reservationRate;
 		this.runningTime = runningTime;
 		this.openingdate = openingdate;
 		this.ageGroup = ageGroup;
 		
 	}
+	
+	
+	
+
+
+	public LocalDateTime[] getMovieSchedule() {
+		return movieSchedule;
+	}
+
+
+
+	public void setMovieSchedule(LocalDateTime[] movieSchedule) {
+		this.movieSchedule = movieSchedule;
+	}
+
+
 
 
 
@@ -42,13 +60,13 @@ public class DetailInfo {
 
 
 
-	public int getOpeningdate() {
+	public LocalDate getOpeningdate() {
 		return openingdate;
 	}
 
 
 
-	public void setOpeningdate(int openingdate) {
+	public void setOpeningdate(LocalDate openingdate) {
 		this.openingdate = openingdate;
 	}
 
