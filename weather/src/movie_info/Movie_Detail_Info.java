@@ -2,7 +2,7 @@ package movie_info;
 
 import java.time.*;
 
-public class DetailInfo {
+public class Movie_Detail_Info {
 	private double reservationRate ; // 예매율
 	private int runningTime; //상영 시간
 	private LocalDate openingdate; //개봉날짜
@@ -10,7 +10,7 @@ public class DetailInfo {
 	
 	private LocalDateTime[] movieSchedule; // 영화예매시간
 	
-	public DetailInfo (double reservationRate ,int runningTime ,LocalDate openingdate ,int ageGroup) {
+	public Movie_Detail_Info (double reservationRate ,int runningTime ,LocalDate openingdate ,int ageGroup) {
 		this.reservationRate = reservationRate;
 		this.runningTime = runningTime;
 		this.openingdate = openingdate;

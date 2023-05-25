@@ -7,7 +7,6 @@ INDEX VERSION 1.132+C:\MINGYU JAVA\.metadata\.plugins\org.eclipse.jdt.core
 4214019411.index
 4237377453.index
 521301484.index
-3054974448.index
 961633384.index
 3530477720.index
 3702745130.index

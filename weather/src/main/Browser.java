@@ -11,7 +11,7 @@ import movie_info.*;
 public class Browser {
 
 	Scanner scanner = new Scanner(System.in);
-	
+	static CGV cgv = CGV.getTotal();
 	
 	public static void main(String[] args) {
 
@@ -34,14 +34,14 @@ public class Browser {
 //	DefaultInfo 클래스에 제목 장르 국가 값 넣어줌
 //	DetailInfo 클래스에 영화세부정보 예매율 상영시간 개봉날짜 연령 값 넣어줌
 		
-	DefaultInfo defaultInfo1 = new DefaultInfo("분노의 질주-라이드 오어 다이" , "액션" , "미국");
-	DetailInfo detailInfo1 = new DetailInfo(12.5 , 141 , LocalDate.of(2023,05,17) , 15);
+	Movie_Default_Info defaultInfo1 = new Movie_Default_Info("분노의 질주-라이드 오어 다이" , "액션" , "미국");
+	Movie_Detail_Info detailInfo1 = new Movie_Detail_Info(12.5 , 141 , LocalDate.of(2023,05,17) , 15);
 	
-	DefaultInfo defaultInfo2 = new DefaultInfo("남은 인생 10년" , "로맨스,멜로" , "일본");
-	DetailInfo detailInfo2 = new DetailInfo(5.6 , 124 , LocalDate.of(2023,05,24) , 12);
+	Movie_Default_Info defaultInfo2 = new Movie_Default_Info("남은 인생 10년" , "로맨스,멜로" , "일본");
+	Movie_Detail_Info detailInfo2 = new Movie_Detail_Info(5.6 , 124 , LocalDate.of(2023,05,24) , 12);
 	
-	DefaultInfo defaultInfo3 = new DefaultInfo("범죄도시3" , "범죄,액션" , "한국");
-	DetailInfo detailInfo3 = new DetailInfo(40.5 , 105 , LocalDate.of(2023,05,31) , 15);
+	Movie_Default_Info defaultInfo3 = new Movie_Default_Info("범죄도시3" , "범죄,액션" , "한국");
+	Movie_Detail_Info detailInfo3 = new Movie_Detail_Info(40.5 , 105 , LocalDate.of(2023,05,31) , 15);
 	
 	 inputCalender(detailInfo3);
 	
@@ -49,7 +49,7 @@ public class Browser {
 	
 	}
 	
-	public void inputCalender(DetailInfo detailInfo) {
+	public void inputCalender(Movie_Detail_Info detailInfo) {
 		
 		LocalDate n = LocalDate.now();
 		LocalTime t = LocalTime.of(00, 00);
@@ -80,32 +80,70 @@ public class Browser {
 		while(true) {
 			switch (menu) {
 			case 0:
-				menu = browser();
+				menu = adminBrowser();
 				break;
 			case 1:
-				menu = join();
+				menu = memberBrowser();
 				break;
 			case 2:
-				menu = browser();
+				menu = join();
 				break;
 			case 3:
-				menu = browser();
+				menu = login();
 				break;
 			case 4:
-				menu = browser();
+				menu = adminBrowser();
+				break;
+			case 5:
+				menu = -1;
 				break;
 				}
 			}
 		}
 			
 	
-	public int browser () {
+	public int adminBrowser () {
 		while (true) {
 			System.out.println("--------------------------------------------------");
 			System.out.println("------------안녕하세요 cgv 인천점 입니다!---------------");
 			System.out.println("--------------------------------------------------");
 			System.out.println("-----------------서비스를 선택해주세요------------------");
 			System.out.println("---------------|1> 회원가입|2> 로그인|----------------");
+			System.out.println("-----------|3> 상영중인 영화|4> 상영예정 영화|-----------");
+			System.out.println("-------------------|5> 나가기|----------------------");
+			
+			String menu = scanner.next();
+			
+			switch (menu) {
+			case "1": {
+				return 2;
+			}
+			case "2": {
+				return 3;
+			}
+			case "3": {
+			}
+			case "4": {
+			}
+			case "5": {
+				System.out.println("이용해 주셔서 감사합니다");
+				return 5;
+			}
+			default : {
+				System.out.println("잘못 입력하셨습니다");
+			}
+			
+		}
+		}
+	}
+	
+	public int memberBrowser () {
+		while (true) {
+			System.out.println("--------------------------------------------------");
+			System.out.println("------------안녕하세요 cgv 인천점 입니다!---------------");
+			System.out.println("--------------------------------------------------");
+			System.out.println("-----------------서비스를 선택해주세요------------------");
+			System.out.println("--------------|1> 회원정보|2> 예매내역|----------------");
 			System.out.println("-----------|3> 상영중인 영화|4> 영화 예매하기|-----------");
 			System.out.println("-------------------|5> 나가기|----------------------");
 			
@@ -116,18 +154,14 @@ public class Browser {
 				return 1;
 			}
 			case "2": {
-				
 			}
 			case "3": {
-				
 			}
 			case "4": {
-				
 			}
 			case "5": {
 				System.out.println("이용해 주셔서 감사합니다");
 				return 5;
-				 
 			}
 			default : {
 				System.out.println("잘못 입력하셨습니다");
@@ -139,12 +173,14 @@ public class Browser {
 	
 	public int join() {
 		while(true) {
+			
+			
 			System.out.println("|1> 이미 회원이십니까? ( 로그인 창으로 이동 )");
 			System.out.println("|2> 메인 화면으로 이동");
 			System.out.println("아니라면 아무키나 입력해주세요.");
 			String j_Check = scanner.next();
 			if(j_Check.equals("1")) {
-				return 2;
+				return 3;
 			}else if(j_Check.equals("2")) {
 				return 0;
 			}
@@ -213,7 +249,7 @@ public class Browser {
 				if(!Pattern.matches("^[\\d]{11}+$" , member_PhoneNumber)) {
 					System.out.println("양식에 맞지 않습니다. 다시 입력해주세요");
 					System.out.println("* 핸드폰 번호를 입력해주세요. '-' 제외 *");
-					member_RRN = scanner.next();
+					member_PhoneNumber = scanner.next();
 				}else {
 					break;
 				}			
@@ -239,19 +275,61 @@ public class Browser {
 			String join_Check = scanner.next();
 			while(true) {
 				if(!(join_Check.equals("n")||join_Check.equals("N")||join_Check.equals("y")||join_Check.equals("Y")))	{
-					System.out.println(" y/n 으로 입력해주세요 ");
-					r_Num_Input = scanner.nextInt();
+					System.out.println("* y/n 으로 입력해주세요 *");
+					join_Check = scanner.next();
 				}else if(join_Check.equals("n")||join_Check.equals("N")) {
 					System.out.println("초기화면으로 이동합니다");
-					return 1;
+					return 0;
 				}
 				else if(join_Check.equals("y")||join_Check.equals("Y")) {
-					System.out.println("--------------------회원가입이 완료되었습니다!----------------------");
-					break;
+//					회원가입 동의입력 받으면 person_Info 인스턴스 생성 값을 넣어줌
+					Person_Info person_Info = new Person_Info
+							(member_ID , member_Password , member_Name , member_RRN , member_PhoneNumber);
+//					싱글톤 CGV에 회원정보 넣어줌
+					cgv.addPersonList(person_Info);
+					
+					System.out.println(member_Name + " 님 환영합니다!" +" 회원가입이 완료되었습니다");
+					return 1;
 				}		
 			}
 	
 	
 }
 }
+	public int login() {
+		System.out.println("|1> 회원이 아니십니까? ( 회원가입 창으로 이동 )");
+		System.out.println("|2> 메인 화면으로 이동");
+		System.out.println("아니라면 아무키나 입력해주세요.");
+		String j_Check = scanner.next();
+		if(j_Check.equals("1")) {
+			return 2;
+		}else if(j_Check.equals("2")) {
+			return 0;
+		}
+		System.out.println("----------------------로그인----------------------");
+		System.out.println("아이디를 입력해주세요");
+		String id_Check = scanner.next();
+		System.out.println("비밀번호를 입력해주세요");
+		String password_Check = scanner.next();
+		System.out.println("로그인 하시곗습니까? ( y/n )");
+		ArrayList<Person_Info> personList= cgv.getPersonList();
+		for(Person_Info person : personList) {
+			if(person.getMember_ID() != id_Check) {
+				System.out.println("없는 아이디 입니다 다시 입력해주세요");
+				for(int i=0; i<10; i++) {
+					id_Check = scanner.next();
+					if(i == 5) {
+						System.out.println("5회이상 틀렸습니다");						
+					}else if (i == 10) {
+						System.out.println("10회이상 틀렸습니다 메인 화면으로 이동합니다");
+						return 0;
+					}
+					
+				}
+				
+			}
+			
+		}
+		return 0;
+	}
 	}
