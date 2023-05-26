@@ -17,11 +17,51 @@ public class Movie_Default_Info {
     	 this.country = country;
     	 
      }
-
+     
 //   영화의 상세정보를 넣는 메소드
      public void getDetailList (Movie_Detail_Info detailInfo) {
     	 Movie_DetaillList.add(detailInfo);
      }
+     
+	@Override
+	public String toString() {
+		
+		return "[ " + this.title + " ]" + " / " + this.genre +  " / "+ this.country;
+	}
+
+	
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public ArrayList<Movie_Detail_Info> getMovie_DetaillList() {
+		return Movie_DetaillList;
+	}
+
+	public void setMovie_DetaillList(ArrayList<Movie_Detail_Info> movie_DetaillList) {
+		Movie_DetaillList = movie_DetaillList;
+	}
      
      
 //    get/set

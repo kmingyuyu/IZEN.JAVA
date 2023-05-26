@@ -18,23 +18,16 @@ public class Movie_Detail_Info {
 		
 	}
 	
-	
-	
 
+	
 
 	public LocalDateTime[] getMovieSchedule() {
 		return movieSchedule;
 	}
 
-
-
 	public void setMovieSchedule(LocalDateTime[] movieSchedule) {
 		this.movieSchedule = movieSchedule;
 	}
-
-
-
-
 
 	public double getReservationRate() {
 		return reservationRate;
