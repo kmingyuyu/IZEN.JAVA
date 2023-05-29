@@ -1,6 +1,6 @@
 package movie_info;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Movie_Default_Info {
      private String title; //영화제목
@@ -23,14 +23,19 @@ public class Movie_Default_Info {
     	 Movie_DetaillList.add(detailInfo);
      }
      
-	@Override
-	public String toString() {
-		
-		return "[ " + this.title + " ]" + " / " + this.genre +  " / "+ this.country;
-	}
+     public void test() {
+    	 Collections.sort(Movie_DetaillList, Collections.reverseOrder()) ; //내림차순
+    	 System.out.println(Movie_DetaillList.toString());
+     }
+     
+	
+	
 
-	
-	
+//	@Override
+//	public String toString() {
+//		return "제목 :" + title + " 장르 :" + genre + " 국가 :" + country  ;
+//	}
+
 	public String getTitle() {
 		return title;
 	}

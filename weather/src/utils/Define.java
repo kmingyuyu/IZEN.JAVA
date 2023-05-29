@@ -3,27 +3,20 @@ package utils;
 public class Define {
 
 //	영화 장르 
-	public final static int GENRE_ACTION = 1; // 액션 코드
-	public final static int GENRE_ROMANCE = 2; // 로맨스 코드
-	public final static int GENRE_COMEDY = 3; // 코메디 코드
-	public final static int GENRE_MUSICAL = 4; // 뮤지컬 코드
-	public final static int GENRE_FANTACY = 5; // 뮤지컬 코드
-	public final static int GENRE_DRAMA = 6; // 드라마 코드
-	public final static int GENRE_SF = 7; // 공상과학 코드
-	public final static int GENRE_DOCUMENTARY = 8; // 다큐멘터리 코드
-	public final static int GENRE_ANIMATION = 9; // 애니메이션 코드
 	
-//	연령가
-	public final static int G_G_RATED = 1000; // 전체관람가 코드
-	public final static int G_PG12 = 1001; // 12세 이상 코드
-	public final static int G_PG15 = 1002; // 15세 이상 코드
-	public final static int G_PG18 = 1003; // 18세 이상 코드
+	public final static int EXIT = -1; // 나가기 코드
+	public final static int ADMIN_BROWSER = 0; // 비회원 페이지 코드
+	public final static int JOIN = 1; // 회원가입 페이지 코드
+	public final static int LOGIN = 2; // 로그인 페이지 코드
+	public final static int MOVIEMENU = 3; // 무비차트 페이지 코드
+	public final static int PLAYING_MOVIE = 31; // 무비차트->현재상영중 페이지 코드
+	public final static int OPENING_MOVIE = 32; // 무비차트->개봉예정 페이지 코드
+	public final static int TICKET_TIMECHOICE = 41; // 예매 1.날짜  코드
 	
-	
-//	국가
-	public final static int NATION_KOREA = 101; // 한국 코드
-	public final static int NATION_USA = 102; //미국 코드
-	public final static int NATION_JAPAN = 103; //일본 코드
+	public final static int MEMBER_BROWSER = 100; // 회원 페이지 코드
+	public final static int INFO = 101; // 회원정보 페이지 코드
+	public final static int LOGOUT = 102; // 로그아웃 페이지 코드
+	public final static int MEMBER_OPENING_MOVIE = 132; // 무비차트(회원)->개봉예정 페이지 코드
 	
 	
 }

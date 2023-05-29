@@ -2,7 +2,7 @@ package movie_info;
 
 import java.time.*;
 
-public class Movie_Detail_Info {
+public class Movie_Detail_Info implements Comparable<Movie_Detail_Info> {
 	private double reservationRate ; // 예매율
 	private int runningTime; //상영 시간
 	private LocalDate openingdate; //개봉날짜
@@ -20,6 +20,23 @@ public class Movie_Detail_Info {
 	
 
 	
+
+	@Override
+	public int compareTo(Movie_Detail_Info o) {
+		return (int) (reservationRate - o.reservationRate);
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "예매율 : " + this.reservationRate + "상영시간 : " + this.runningTime
+				+ "개봉날짜 : " + this.openingdate + "연령 : " + this.ageGroup;
+	}
+
+
+
 
 	public LocalDateTime[] getMovieSchedule() {
 		return movieSchedule;
