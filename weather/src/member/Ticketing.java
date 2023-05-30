@@ -47,7 +47,18 @@ public class Ticketing {
 		}
 }
 
-	
+	public int movieSeat () {
+		while(true) {
+			System.out.println(" |1> 일반관|2> IMAX|3> 3D|");
+			menu = scanner.next();
+			switch (menu) {
+			case "1":  return Define.INFOMENU;
+			case "2":  return Define.LOGOUT;
+			case "3":  return Define.MOVIEMENU;   
+			default : System.err.println("잘못 입력하셨습니다");			
+				}
+		}
+	}
 	
 	
 	

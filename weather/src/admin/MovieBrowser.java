@@ -13,6 +13,10 @@ public class MovieBrowser {
 	String menu ; // 스캐너 입력객체
 	int num = 0; 
 	
+	Map<Integer, Movie_Default_Info> movieList_default = cgv.getMovieList_Default();
+	Movie_Default_Info m = movieList_default.get("sky");
+
+	
 	public int movieMenu() {
 		while (true) {
 			System.out.println("-----------------서비스를 선택해주세요------------------");
@@ -35,7 +39,6 @@ public class MovieBrowser {
 	}
 	
 	public void menuChoice() {
-		ArrayList<Movie_Default_Info> defaultList= cgv.getMovieList();
 		for(Movie_Default_Info Defalut : defaultList) {
 			ArrayList<Movie_Detail_Info> movieDetail = Defalut.getMovie_DetaillList();
 			for(int i=0 ; i<movieDetail.size(); i++  ) {

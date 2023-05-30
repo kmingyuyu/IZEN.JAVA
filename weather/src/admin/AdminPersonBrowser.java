@@ -10,10 +10,7 @@ import utils.Define;
 public class AdminPersonBrowser {
 	Scanner scanner = new Scanner(System.in);
 	static CGV cgv = CGV.getTotal();
-	ArrayList<Person_Info> personList= cgv.getPersonList();
 	
-	String temp_ID ;
-	String temp_PW ;
 	
 	public int join() {
 		while(true) {
@@ -31,11 +28,7 @@ public class AdminPersonBrowser {
 			System.out.println("사용하실 아이디를 입력 해주세요. (영소문자 6자리 이상 12이내)");
 			member_ID = scanner.next();
 			while(true) {
-				if(personList.contains(member_ID)) {
-					System.err.println("가입된 아이디 입니다. 다시 입력해주세요");
-					member_ID = scanner.next();
-				}
-				else if(!Pattern.matches("^[a-z]{6,12}$" , member_ID)) {
+				if(!Pattern.matches("^[a-z]{6,12}$" , member_ID)) {
 					System.err.println("양식에 맞지 않습니다. 다시 입력해주세요");
 					System.err.println("* 영소문자 6자리 이상 12이내 *");
 					member_ID = scanner.next();
@@ -100,11 +93,7 @@ public class AdminPersonBrowser {
 			System.out.println("핸드폰 번호를 입력해주세요. ( '-' 제외 )");
 			member_PhoneNumber = scanner.next();
 			while(true) {
-				boolean check = personList.contains(member_PhoneNumber);
-				if(check == true) {
-					System.err.println("가입된 번호 입니다. 다시 입력해주세요");
-					member_PhoneNumber = scanner.next();
-				}else if(!Pattern.matches("^[\\d]{11}+$" , member_PhoneNumber)) {
+				 if(!Pattern.matches("^[\\d]{11}+$" , member_PhoneNumber)) {
 						  System.err.println("양식에 맞지 않습니다. 다시 입력해주세요");
 						  System.err.println("* 핸드폰 번호를 입력해주세요. '-' 제외 *");
 						  member_PhoneNumber = scanner.next();
@@ -143,12 +132,12 @@ public class AdminPersonBrowser {
 			}
 		
 //			회원가입 동의입력 받으면 회원정보 값을 넣어줌
-			Person_Info person_Info = new Person_Info
-						(member_ID , member_Password , member_Name , member_RRN , member_PhoneNumber);
+//			Person_Info person_Info = new Person_Info
+//						(member_ID , member_Password , member_Name , member_RRN , member_PhoneNumber);
 //			싱글톤 CGV에 회원정보 넣어줌
-			cgv.addPersonList(person_Info);
+//			cgv.addPersonList(person_Info);
 					
-			System.out.println(person_Info.getMember_Name() + " 님 환영합니다!" +" 회원가입이 완료되었습니다");
+//			System.out.println(person_Info.getMember_Name() + " 님 환영합니다!" +" 회원가입이 완료되었습니다");
 			return Define.MEMBER_BROWSER;
 			}
 		}
@@ -176,10 +165,6 @@ public class AdminPersonBrowser {
 			}else if(j_Check.equals("n")||j_Check.equals("N")) {
 				System.err.println("메인화면으로 이동합니다");
 				return Define.ADMIN_BROWSER;				
-			}
-			else if(!(personList.contains(id_Check) || personList.contains(password_Check))){
-				System.err.println("가입된 아이디 입니다 다시 입력해주세요");
-				return Define.LOGIN;
 			}
 		else {
 				break;

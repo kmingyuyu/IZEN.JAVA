@@ -1,20 +1,39 @@
 package movie_info;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class CGV {
 //	 싱글톤
     private static CGV instance = new CGV();
     
     private boolean login = false  ; //로그인 상태
-    private String temp_ID  ; // 아이디 확인
+    private String temp_ID = "skyjangkin" ; // 아이디 확인
     
-    HashMap<String , Integer> temp_Movie = new HashMap<>(); // 예매번호 /  받은 영화
+//  CGV에 영화 정보들을 넣어준다.
+  
+  private Map<Integer, Movie_Default_Info> movieList_Default =new HashMap<>();
+  private Map<String, Person_Info> personList =new HashMap<>();
 	
-    public void putTemp_Movie (String ID , int num) {
-		temp_Movie.put(ID , num);
+//싱글톤 생성자
+  private CGV() {}
+  
+	
+//싱글톤 메소드
+  public static CGV getTotal() {
+ 	 if (instance == null) {
+			instance = new CGV();
+		}
+		return instance;
+	 }
+    
+    
+	
+    public void put_MovieList (int num , Movie_Default_Info movie_Default_Info) {
+    	movieList_Default.put(num , movie_Default_Info);
 	}
+    public void put_personList (String ID , Person_Info person_Info) {
+    	personList.put(ID , person_Info);
+    }
     
     public boolean isLogin() {
 		return login;
@@ -36,54 +55,34 @@ public class CGV {
 	}
 
 
+	
 
-	public HashMap<String, Integer> getTemp_Movie() {
-		return temp_Movie;
-	}
-
-	public void setTemp_Movie(HashMap<String, Integer> temp_Movie) {
-		this.temp_Movie = temp_Movie;
+	public Map<Integer, Movie_Default_Info> getMovieList_Default() {
+		return movieList_Default;
 	}
 
 
+	public void setMovieList_Default(Map<Integer, Movie_Default_Info> movieList_Default) {
+		this.movieList_Default = movieList_Default;
+	}
 
-	//    CGV에 영화 정보들을 넣어준다.
-    private ArrayList<Movie_Default_Info> movieList = new ArrayList<> ();
-    private ArrayList<Person_Info> personList = new ArrayList<> ();
-    
+
+	public Map<String, Person_Info> getPersonList() {
+		return personList;
+	}
+
+
+	public void setPersonList(Map<String, Person_Info> personList) {
+		this.personList = personList;
+	}
+
+
+
+
+
+
 	
-//  싱글톤 생성자
-    private CGV() {}
     
-	
-//  싱글톤 메소드
-    public static CGV getTotal() {
-   	 if (instance == null) {
-			instance = new CGV();
-		}
-		return instance;
-	 }
-    
-
-
-	//    영화정보를 담는 메소드
-    public void addMovieList (Movie_Default_Info defaultInfo) {
-    	movieList.add(defaultInfo);
-    }  
-    
-//    회원정보를 담는 메소드
-  public void addPersonList (Person_Info person_Info) {
-	  personList.add(person_Info);
-  }
-
-
-public ArrayList<Movie_Default_Info> getMovieList() {
-	return movieList;
-}
-
-public ArrayList<Person_Info> getPersonList() {
-	return personList;
-}
 
 
   

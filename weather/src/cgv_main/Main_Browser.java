@@ -1,5 +1,6 @@
 package cgv_main;
 
+import java.security.KeyStore.Entry;
 import java.time.*;
 import java.util.*;
 
@@ -10,20 +11,39 @@ import member.*
 
 	Scanner scanner = new Scanner(System.in);
 	static CGV cgv = CGV.getTotal();
+	public String[][] seat = new String[5][9];
 	
 	
 	public static void main(String[] args) {
+		Map<Integer, Movie_Default_Info> movieList_default = cgv.getMovieList_Default();
 		adminBrowser start = new adminBrowser();
 		inputInfo();
-		start.mainView();
-//		MemberBrowser t = new MemberBrowser();
-//		t.memberMainView();
-//		ArrayList<Movie_Default_Info> defaultList= cgv.getMovieList();
-//		temp.putTemp_Movie(temp.getTemp_ID(), defaultList.get(0));
-//		HashMap<String, Movie_Default_Info> t = temp.getTemp_Movie();
-//		System.out.println(temp.getTemp_Movie());
+		
+		Collection<Movie_Default_Info> values = movieList_default.values();
+		System.out.println(values);
+		
+		movieList_default.forEach((key, value) -> {	
+			System.out.println(key + " : " + value);	
+		});	
 		
 		
+		
+		}
+		
+	
+
+	
+
+	public void reference(){
+		char row = 'A';
+
+		for(int i=1; i<5; i++){
+			System.out.print("\n"+row+"열  ");row++;
+			for(int j=1; j<9; j++){
+				String seat = (this.seat[i][j].equals("___"))?"◻︎":"◼︎";
+				System.out.print((j)+seat+"  ");
+			}
+		}
 	}
 	
 	
@@ -45,17 +65,19 @@ import member.*
 	inputCalender(detailInfo2);
 	inputCalender(detailInfo3);
 	 
-	defaultInfo1.getDetailList(detailInfo1);
-	defaultInfo2.getDetailList(detailInfo2);
-	defaultInfo3.getDetailList(detailInfo3);
 	
+	defaultInfo1.put_MovieList(defaultInfo1.getTitle(), detailInfo1);
+	defaultInfo1.put_MovieList(defaultInfo2.getTitle(), detailInfo1);
+	defaultInfo1.put_MovieList(defaultInfo3.getTitle(), detailInfo1);
 	
-	cgv.addMovieList(defaultInfo1);
-	cgv.addMovieList(defaultInfo2);
-	cgv.addMovieList(defaultInfo3);
+	cgv.put_MovieList(1, defaultInfo1);
+	cgv.put_MovieList(2, defaultInfo2);
+	cgv.put_MovieList(3, defaultInfo3);
 	
 	
 	}
+	
+	
 	
 	public static void inputCalender(Movie_Detail_Info detailInfo) {
 		

@@ -23,6 +23,12 @@ public class Person_Info {
 	}
 
 
+	@Override
+	public String toString() {
+		return "id : " + this.member_ID;
+	}
+
+
 	public String getMember_ID() {
 		return member_ID;
 	}

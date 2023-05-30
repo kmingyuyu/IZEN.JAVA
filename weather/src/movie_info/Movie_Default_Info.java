@@ -8,7 +8,8 @@ public class Movie_Default_Info {
      private String country; // 국가
      
 //   영화의 상세정보를 담는다
-     private ArrayList<Movie_Detail_Info> Movie_DetaillList = new ArrayList<> ();
+     private Map<String, Movie_Detail_Info> movieList_Detail =new HashMap<>();
+     
      
 //    생성자
      public Movie_Default_Info(String title , String genre , String country) {
@@ -18,24 +19,18 @@ public class Movie_Default_Info {
     	 
      }
      
-//   영화의 상세정보를 넣는 메소드
-     public void getDetailList (Movie_Detail_Info detailInfo) {
-    	 Movie_DetaillList.add(detailInfo);
-     }
      
-     public void test() {
-    	 Collections.sort(Movie_DetaillList, Collections.reverseOrder()) ; //내림차순
-    	 System.out.println(Movie_DetaillList.toString());
-     }
-     
-	
-	
+     public void put_MovieList (String Title , Movie_Detail_Info movie_Detail_Info) {
+    	 movieList_Detail.put(Title , movie_Detail_Info);
+ 	}
 
-//	@Override
-//	public String toString() {
-//		return "제목 :" + title + " 장르 :" + genre + " 국가 :" + country  ;
-//	}
 
+	@Override
+	public String toString() {
+		return "제목 :" + title + " 장르 :" + genre + " 국가 :" + country  ;
+	}
+
+//    get/set
 	public String getTitle() {
 		return title;
 	}
@@ -60,16 +55,18 @@ public class Movie_Default_Info {
 		this.country = country;
 	}
 
-	public ArrayList<Movie_Detail_Info> getMovie_DetaillList() {
-		return Movie_DetaillList;
+
+	public Map<String, Movie_Detail_Info> getMovieList_Detail() {
+		return movieList_Detail;
 	}
 
-	public void setMovie_DetaillList(ArrayList<Movie_Detail_Info> movie_DetaillList) {
-		Movie_DetaillList = movie_DetaillList;
+
+	public void setMovieList_Detail(Map<String, Movie_Detail_Info> movieList_Detail) {
+		this.movieList_Detail = movieList_Detail;
 	}
+
      
      
-//    get/set
 	
      
      
