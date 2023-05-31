@@ -6,12 +6,12 @@ import member.*;
 
 public class adminBrowser {
 	Scanner scanner = new Scanner(System.in);
-	AdminPersonBrowser personBrowser = new AdminPersonBrowser();
-	MovieBrowser movieBrowser = new MovieBrowser();
-	MemberBrowser memberBrowser = new MemberBrowser();
-	
 	
 	public String mainView() {
+		AdminPersonBrowser personBrowser = new AdminPersonBrowser();
+		MovieBrowser movieBrowser = new MovieBrowser();
+		MemberBrowser memberBrowser = new MemberBrowser();
+		
 		int remote = Define.ADMIN_BROWSER;
 		while(true) {
 			switch (remote) {

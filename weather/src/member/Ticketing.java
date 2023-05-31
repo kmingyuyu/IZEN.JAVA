@@ -24,20 +24,11 @@ public class Ticketing {
 
 	
 	public int movieTimeChoice() {
-		int value = cgv.getTemp_Movie().get(cgv.getTemp_ID());
 		System.out.println("--------------------예매를 진행합니다 ---------------------");
 		System.out.println(" 날짜를 선택해주세요 ");
-		ArrayList<Movie_Default_Info> defaultList= cgv.getMovieList();
-		for(Movie_Default_Info Defalut : defaultList) {
-			ArrayList<Movie_Detail_Info> movieDetail = Defalut.getMovie_DetaillList();
-			for(int i=0 ; i<movieDetail.size(); i++  ) {
-				Movie_Detail_Info detail = movieDetail.get(value);
-				moiveList(detail);
-			}
 		
 			
 		
-		}
 		return Define.MEMBER_BROWSER;
 	
 }

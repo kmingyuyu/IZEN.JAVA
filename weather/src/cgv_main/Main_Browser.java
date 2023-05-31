@@ -4,7 +4,7 @@ import java.time.*;
 import java.util.*;
 import java.util.Map.Entry;
 
-import admin.adminBrowser;
+import admin.*;
 import movie_info.*;
 import utils.Define;
 import member.*
@@ -17,89 +17,38 @@ import member.*
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		Map<Integer, Movie_Default_Info> movieList_default = cgv.getMovieList_Default();
 		adminBrowser start = new adminBrowser();
 		inputInfo();
-		
-		Main_Browser d = new Main_Browser();
-		d.Info_Secession();
-
-//		전체값 가져오는법
-//			for(Entry<Integer, Movie_Default_Info> default_Movie : movieList_default.entrySet()) {
-//				System.out.println(default_Movie.getValue());
-//			Map<String, Movie_Detail_Info> movieList_detail = default_Movie.getValue().getMovieList_Detail();
-//			for(Entry<String, Movie_Detail_Info> detail_Movie : movieList_detail.entrySet()) {
-//				System.out.println(detail_Movie.getValue());
-//				LocalDateTime[] t = detail_Movie.getValue().getMovieSchedule();
-//					for(LocalDateTime date : t) {
-//					System.out.println(date);
-//				}
-//			}
-//			
-//			
-//		}
+		MovieBrowser movie = new MovieBrowser();
+		AdminPersonBrowser d = new AdminPersonBrowser();
+		MemberPersonBrowser t = new MemberPersonBrowser();
+		MemberBrowser dd = new MemberBrowser();
 		Person_Info person_Info = new Person_Info
-				("sky" , "5" , "2" , "3" , "4");
-		Person_Info person_Info2 = new Person_Info
-				("sky2" , "10" , "2" , "3" , "4");
+				("sky2" , "비밀번호" , "이름" , "생년월일" , "핸드폰번호");
 //	싱글톤 CGV에 회원정보 넣어줌
-	cgv.put_personList("sky", person_Info);
-	cgv.put_personList("sky2", person_Info2);
-	String menu ="5";
-	
-	
+	cgv.put_personList("sky2", person_Info);
 		
-		
-		}
-	public int Info_Secession() {
-		while(true) {
-			System.out.println(" * 회원 탈퇴 하시겠습니까? (Y/N) * ");
-			menu = scanner.next();
-			switch (menu) {
-			case "Y" , "y": PN_Check (); 
-			case "N" , "n": return Define.INFOMENU;
-			default : System.err.println("* 잘못 입력하셨습니다 *");
-			}
-		}
-}
+//		dd.memberMainView();
+	Map<Movie_Default_Info , Movie_Detail_Info> movieList = cgv.getMovieList();
 	
-	public int PN_Check () {
-		while(true) {
-			System.out.println(" * 가입 하신 핸드폰 번호를 입력해주세요 * ");
-			menu = scanner.next();
-			Map<String, Person_Info> personList = cgv.getPersonList();
-			for(int i=0; i<=5; i++) {
-				Person_Info personInfo = personList.get(cgv.getTemp_ID());
-				if(personInfo.getMember_PhoneNumber().equals(menu)) {
-					System.out.println(" * 확인 되셨습니다 * ");
-					break;
-				}	else if(i == 5) {
-						System.err.println(" * 5번 이상 틀리셨습니다 * ");
-						System.err.println(" * 비밀번호 확인 창으로 이동합니다 * ");
-						break;
-					
-				}else if(!personInfo.getMember_PhoneNumber().equals(menu)){
-					System.err.println(" * 가입하신 번호가 없습니다 다시 입력해주세요 * ");
-				}
-			}
-		}
-		
+	for(int i=0; i<movieList.size(); i++) {
+		System.out.println(movieList.keySet());
 	}
 	
+	
+	
+	for(Entry<Movie_Default_Info, Movie_Detail_Info> default_Movie : movieList.entrySet()) {
+		System.out.println(default_Movie.toString());
+	};
+	
+	dd.memberMainView();
+		
 
 	
-
-	public void reference(){
-		char row = 'A';
-
-		for(int i=1; i<5; i++){
-			System.out.print("\n"+row+"열  ");row++;
-			for(int j=1; j<9; j++){
-				String seat = (this.seat[i][j].equals("___"))?"◻︎":"◼︎";
-				System.out.print((j)+seat+"  ");
-			}
 		}
-	}
+		
+		
+		
 	
 	
 	public static void inputInfo() {
@@ -121,13 +70,10 @@ import member.*
 	inputCalender(detailInfo3);
 	 
 	
-	defaultInfo1.put_MovieList(defaultInfo1.getTitle(), detailInfo1);
-	defaultInfo1.put_MovieList(defaultInfo2.getTitle(), detailInfo2);
-	defaultInfo1.put_MovieList(defaultInfo3.getTitle(), detailInfo3);
 	
-	cgv.put_MovieList(1, defaultInfo1);
-	cgv.put_MovieList(2, defaultInfo2);
-	cgv.put_MovieList(3, defaultInfo3);
+	cgv.put_MovieList( defaultInfo1 , detailInfo1);
+	cgv.put_MovieList( defaultInfo2 , detailInfo2);
+	cgv.put_MovieList( defaultInfo3 , detailInfo3);
 	
 	
 	}

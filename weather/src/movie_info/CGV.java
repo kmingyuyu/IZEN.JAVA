@@ -6,12 +6,12 @@ public class CGV {
 //	 싱글톤
     private static CGV instance = new CGV();
     
-    private boolean login = false  ; //로그인 상태
+    private boolean login = true  ; //로그인 상태
     private String temp_ID = "sky2" ; // 아이디 확인
     
 //  CGV에 영화 정보들을 넣어준다.
   
-  private Map<Integer, Movie_Default_Info> movieList_Default =new HashMap<>();
+  private Map<Movie_Default_Info, Movie_Detail_Info> movieList =new LinkedHashMap<>();
   private Map<String, Person_Info> personList =new HashMap<>();
 	
 //싱글톤 생성자
@@ -28,8 +28,8 @@ public class CGV {
     
     
 	
-    public void put_MovieList (int num , Movie_Default_Info movie_Default_Info) {
-    	movieList_Default.put(num , movie_Default_Info);
+    public void put_MovieList (Movie_Default_Info movie_Default_Info , Movie_Detail_Info movie_Detail_Info) {
+    	movieList.put(movie_Default_Info , movie_Detail_Info );
 	}
     public void put_personList (String ID , Person_Info person_Info) {
     	personList.put(ID , person_Info);
@@ -57,13 +57,15 @@ public class CGV {
 
 	
 
-	public Map<Integer, Movie_Default_Info> getMovieList_Default() {
-		return movieList_Default;
+
+
+	public Map<Movie_Default_Info, Movie_Detail_Info> getMovieList() {
+		return movieList;
 	}
 
 
-	public void setMovieList_Default(Map<Integer, Movie_Default_Info> movieList_Default) {
-		this.movieList_Default = movieList_Default;
+	public void setMovieList(Map<Movie_Default_Info, Movie_Detail_Info> movieList) {
+		this.movieList = movieList;
 	}
 
 

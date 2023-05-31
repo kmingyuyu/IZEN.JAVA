@@ -25,10 +25,10 @@ public class Person_Info {
 
 	@Override
 	public String toString() {
-		return " id : " + this.member_ID + 
-				"\n 이름 : " + this.member_Name + 
-				"\n 주민번호(앞자리) : " + this.member_RRN + 
-				"\n P/N : " + this.member_PhoneNumber;
+		return "\tID : " + this.member_ID + 
+				"\n\t성함 : " + this.member_Name + 
+				"\n\t생년월일(앞자리) : " + this.member_RRN + 
+				"\n\tP/N : " + this.member_PhoneNumber;
 	}
 
 

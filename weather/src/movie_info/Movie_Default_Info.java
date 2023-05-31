@@ -8,7 +8,6 @@ public class Movie_Default_Info {
      private String country; // 국가
      
 //   영화의 상세정보를 담는다
-     private Map<String, Movie_Detail_Info> movieList_Detail =new HashMap<>();
      
      
 //    생성자
@@ -20,9 +19,6 @@ public class Movie_Default_Info {
      }
      
      
-     public void put_MovieList (String Title , Movie_Detail_Info movie_Detail_Info) {
-    	 movieList_Detail.put(Title , movie_Detail_Info);
- 	}
 
 
 	@Override
@@ -56,14 +52,6 @@ public class Movie_Default_Info {
 	}
 
 
-	public Map<String, Movie_Detail_Info> getMovieList_Detail() {
-		return movieList_Detail;
-	}
-
-
-	public void setMovieList_Detail(Map<String, Movie_Detail_Info> movieList_Detail) {
-		this.movieList_Detail = movieList_Detail;
-	}
 
      
      
