@@ -1,35 +1,90 @@
 package cgv_main;
 
-import java.security.KeyStore.Entry;
 import java.time.*;
 import java.util.*;
+import java.util.Map.Entry;
 
 import admin.adminBrowser;
 import movie_info.*;
+import utils.Define;
 import member.*
 ;public class Main_Browser {
-
 	Scanner scanner = new Scanner(System.in);
 	static CGV cgv = CGV.getTotal();
 	public String[][] seat = new String[5][9];
+	String menu ; // 스캐너 입력객체
 	
 	
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
 		Map<Integer, Movie_Default_Info> movieList_default = cgv.getMovieList_Default();
 		adminBrowser start = new adminBrowser();
 		inputInfo();
 		
-		Collection<Movie_Default_Info> values = movieList_default.values();
-		System.out.println(values);
-		
-		movieList_default.forEach((key, value) -> {	
-			System.out.println(key + " : " + value);	
-		});	
-		
+		Main_Browser d = new Main_Browser();
+		d.Info_Secession();
+
+//		전체값 가져오는법
+//			for(Entry<Integer, Movie_Default_Info> default_Movie : movieList_default.entrySet()) {
+//				System.out.println(default_Movie.getValue());
+//			Map<String, Movie_Detail_Info> movieList_detail = default_Movie.getValue().getMovieList_Detail();
+//			for(Entry<String, Movie_Detail_Info> detail_Movie : movieList_detail.entrySet()) {
+//				System.out.println(detail_Movie.getValue());
+//				LocalDateTime[] t = detail_Movie.getValue().getMovieSchedule();
+//					for(LocalDateTime date : t) {
+//					System.out.println(date);
+//				}
+//			}
+//			
+//			
+//		}
+		Person_Info person_Info = new Person_Info
+				("sky" , "5" , "2" , "3" , "4");
+		Person_Info person_Info2 = new Person_Info
+				("sky2" , "10" , "2" , "3" , "4");
+//	싱글톤 CGV에 회원정보 넣어줌
+	cgv.put_personList("sky", person_Info);
+	cgv.put_personList("sky2", person_Info2);
+	String menu ="5";
+	
+	
 		
 		
 		}
+	public int Info_Secession() {
+		while(true) {
+			System.out.println(" * 회원 탈퇴 하시겠습니까? (Y/N) * ");
+			menu = scanner.next();
+			switch (menu) {
+			case "Y" , "y": PN_Check (); 
+			case "N" , "n": return Define.INFOMENU;
+			default : System.err.println("* 잘못 입력하셨습니다 *");
+			}
+		}
+}
+	
+	public int PN_Check () {
+		while(true) {
+			System.out.println(" * 가입 하신 핸드폰 번호를 입력해주세요 * ");
+			menu = scanner.next();
+			Map<String, Person_Info> personList = cgv.getPersonList();
+			for(int i=0; i<=5; i++) {
+				Person_Info personInfo = personList.get(cgv.getTemp_ID());
+				if(personInfo.getMember_PhoneNumber().equals(menu)) {
+					System.out.println(" * 확인 되셨습니다 * ");
+					break;
+				}	else if(i == 5) {
+						System.err.println(" * 5번 이상 틀리셨습니다 * ");
+						System.err.println(" * 비밀번호 확인 창으로 이동합니다 * ");
+						break;
+					
+				}else if(!personInfo.getMember_PhoneNumber().equals(menu)){
+					System.err.println(" * 가입하신 번호가 없습니다 다시 입력해주세요 * ");
+				}
+			}
+		}
 		
+	}
 	
 
 	
@@ -67,8 +122,8 @@ import member.*
 	 
 	
 	defaultInfo1.put_MovieList(defaultInfo1.getTitle(), detailInfo1);
-	defaultInfo1.put_MovieList(defaultInfo2.getTitle(), detailInfo1);
-	defaultInfo1.put_MovieList(defaultInfo3.getTitle(), detailInfo1);
+	defaultInfo1.put_MovieList(defaultInfo2.getTitle(), detailInfo2);
+	defaultInfo1.put_MovieList(defaultInfo3.getTitle(), detailInfo3);
 	
 	cgv.put_MovieList(1, defaultInfo1);
 	cgv.put_MovieList(2, defaultInfo2);
@@ -85,7 +140,6 @@ import member.*
 		LocalTime t = LocalTime.of(00, 00);
 		LocalDateTime nt =  LocalDateTime.of(n,t);
 		
-		if(detailInfo.getOpeningdate().isBefore(n)){
 				LocalDateTime[] movieSchedule = {
 //						당일날 예매시간표
 						nt.plusHours(10).plusMinutes(30),
@@ -97,7 +151,6 @@ import member.*
 						nt.plusDays(1).plusHours(19).plusMinutes(30)};		
 				
 				detailInfo.setMovieSchedule(movieSchedule);
-		}
 	
 	}
 }

@@ -20,7 +20,9 @@ public class MemberBrowser  {
 				break;
 			case 101: remote = personBrowser.infoMenu(); // 1>회원관리 메뉴 화면
 				break;
-			case 111: remote = personBrowser.Info_Person(); // 1>회원관리 메뉴 화면
+			case 110: remote = personBrowser.pwCheck(); // 1>회원관리메뉴 전 비밀먼호확인 메뉴 화면
+				break;
+			case 111: remote = personBrowser.Info_Person(); // 1>회원관리 메뉴 -> 회원정보 화면
 				break;
 			case 112: remote = personBrowser.infoMenu(); // 1>회원관리 메뉴 화면
 				break;
@@ -44,7 +46,7 @@ public class MemberBrowser  {
 			System.out.println("------------안녕하세요 cgv 인천점 입니다!---------------");
 			System.out.println("--------------------------------------------------");
 			System.out.println("-----------------서비스를 선택해주세요------------------");
-			System.out.println("----------|1> 회원관리|2> 로그아웃|3>무비차트------------");
+			System.out.println("----------|1> 회원관리|2> 로그아웃|3> 무비차트-----------");
 			System.out.println("-------------------|4> 나가기|----------------------");
 			String menu = scanner.next();
 			switch (menu) {

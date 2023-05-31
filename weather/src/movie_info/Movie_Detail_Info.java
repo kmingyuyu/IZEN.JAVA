@@ -24,6 +24,7 @@ public class Movie_Detail_Info  {
 	public String toString() {
 		return 	  "예매율 : " + this.reservationRate + "상영시간 : " + this.runningTime
 				+ "개봉날짜 : " + this.openingdate + "연령 : " + this.ageGroup;
+		
 	}
 
 

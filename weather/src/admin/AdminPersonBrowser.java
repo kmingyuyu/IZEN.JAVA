@@ -132,12 +132,12 @@ public class AdminPersonBrowser {
 			}
 		
 //			회원가입 동의입력 받으면 회원정보 값을 넣어줌
-//			Person_Info person_Info = new Person_Info
-//						(member_ID , member_Password , member_Name , member_RRN , member_PhoneNumber);
+			Person_Info person_Info = new Person_Info
+						(member_ID , member_Password , member_Name , member_RRN , member_PhoneNumber);
 //			싱글톤 CGV에 회원정보 넣어줌
-//			cgv.addPersonList(person_Info);
+			cgv.put_personList(member_ID, person_Info);
 					
-//			System.out.println(person_Info.getMember_Name() + " 님 환영합니다!" +" 회원가입이 완료되었습니다");
+			System.out.println(person_Info.getMember_Name() + " 님 환영합니다!" +" 회원가입이 완료되었습니다");
 			return Define.MEMBER_BROWSER;
 			}
 		}

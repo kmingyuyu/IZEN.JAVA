@@ -7,7 +7,7 @@ public class CGV {
     private static CGV instance = new CGV();
     
     private boolean login = false  ; //로그인 상태
-    private String temp_ID = "skyjangkin" ; // 아이디 확인
+    private String temp_ID = "sky2" ; // 아이디 확인
     
 //  CGV에 영화 정보들을 넣어준다.
   

@@ -14,10 +14,12 @@ public class Define {
 	public final static int TICKET_TIMECHOICE = 141; // 예매 1.날짜  코드
 	
 	public final static int MEMBER_BROWSER = 100; // 회원 페이지 코드
-	public final static int INFOMENU = 101; // 회원관리 메뉴 페이지 코드
-	public final static int INFO_PERSON = 111; // 회원관리 메뉴 페이지 코드
-	public final static int INFO_TICKETING = 112; // 회원관리메뉴->회원정보 페이지 코드
-	public final static int INFO_SECESSION = 113; // 회원정보 페이지 코드
+	public final static int PW_CHECK = 101; // 회원관리 전 비밀번호확인 페이지 코드
+	public final static int INFOMENU = 110; // 회원관리 메뉴 페이지 코드
+	public final static int INFO_PERSON = 111; // 회원관리메뉴 -> 회원정보 메뉴 페이지 코드
+	public final static int INFO_TICKETING = 112; // 회원관리메뉴-> 예매정보 페이지 코드
+	public final static int INFO_SECESSION = 113; // 회원관리메뉴->회원탈퇴 페이지 코드
+	public final static int PN_CHECK = 1011; // 회원탈퇴 전 핸드폰번호확인 페이지 코드
 	public final static int LOGOUT = 102; // 로그아웃 페이지 코드
 	
 	

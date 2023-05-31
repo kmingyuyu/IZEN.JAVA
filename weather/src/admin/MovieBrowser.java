@@ -111,7 +111,7 @@ public class MovieBrowser {
 			System.out.println("\t|1> 나가기");
 			menu = scanner.next();
 			switch (menu) {
-			case "1":  return Define.MOVIEMENU;
+			case "1": return Define.MOVIEMENU;
 			default : System.err.println("* 잘못 입력하셨습니다 *");			
 				}
 		}
