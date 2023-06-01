@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="quiz0426.Marine"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="Quiz.Nav"/>
     <fullyQualifiedTypeName name="ch06.sec13.exam02.pakage1.A"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="javax.sound.midi.SysexMessage"/>
     <fullyQualifiedTypeName name="utils.Define"/>
     <fullyQualifiedTypeName name="java.util.Map.Entry"/>
+    <fullyQualifiedTypeName name="admin.MovieBrowser"/>
 </qualifiedTypeNameHistroy>

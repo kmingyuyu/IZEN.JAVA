@@ -10,17 +10,11 @@ public class Person_Info {
 	
 	
 //	생성자
-	public Person_Info (String member_ID ,String member_Password ,String member_Name , String member_RRN ,String member_PhoneNumber) {
-		this.member_ID = member_ID;
-		this.member_Password = member_Password;
-		this.member_Name = member_Name;
-		this.member_RRN = member_RRN;
-		this.member_PhoneNumber = member_PhoneNumber;
+	
 		
 		
 		
-		
-	}
+	
 
 
 	@Override

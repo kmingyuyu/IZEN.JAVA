@@ -17,7 +17,7 @@ public class MemberPersonBrowser {
 		System.out.println("----------------------회원 관리창---------------------");
 		System.out.println("\t* 비밀번호를 입력해주세요 |> N 뒤로가기 * ");
 		while(true) {
-			String menu = scanner.next();
+			menu = scanner.next();
 			Map<String, Person_Info> personList = cgv.getPersonList();
 			for(int i=0; i<personList.size(); i++) {
 				Person_Info personInfo = personList.get(cgv.getTemp_ID());

@@ -38,7 +38,7 @@ public class MemberBrowser  {
 				break;
 			case 32: remote = movieBrowser.opening_Movie();	// 3>무비차트 -> 2>개봉예정 화면
 				break;
-			case 141: remote = ticketing.movieTimeChoice();	//  예매 1.날짜 화면
+			case 141: remote = ticketing.ticketing();	//  예매 화면
 				break;
 			case 0: adminbrowser.mainView();	//  회원탈퇴/로그아웃시 비회원화면 으로 이동
 				break;

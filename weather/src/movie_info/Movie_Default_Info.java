@@ -7,7 +7,9 @@ public class Movie_Default_Info {
      private String genre; //영화 장르
      private String country; // 국가
      
-//   영화의 상세정보를 담는다
+     private ArrayList<Movie_Detail_Info> movie_Detail = new ArrayList<>();
+     
+     
      
      
 //    생성자
@@ -16,6 +18,22 @@ public class Movie_Default_Info {
     	 this.genre = genre;
     	 this.country = country;
     	 
+     }
+     
+     
+public ArrayList<Movie_Detail_Info> getMovie_Detail() {
+		return movie_Detail;
+	}
+
+
+	public void setMovie_Detail(ArrayList<Movie_Detail_Info> movie_Detail) {
+		this.movie_Detail = movie_Detail;
+	}
+
+
+	//   영화의 상세정보를 담는다
+     public void addmovie_Detail(Movie_Detail_Info Movie_Detail_Info) {
+    	 movie_Detail.add(Movie_Detail_Info);
      }
      
      

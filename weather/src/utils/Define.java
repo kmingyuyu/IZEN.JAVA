@@ -11,7 +11,7 @@ public class Define {
 	public final static int MOVIEMENU = 3; // 무비차트 페이지 코드
 	public final static int PLAYING_MOVIE = 31; // 무비차트->현재상영중 페이지 코드
 	public final static int OPENING_MOVIE = 32; // 무비차트->개봉예정 페이지 코드
-	public final static int TICKET_TIMECHOICE = 141; // 예매 1.날짜  코드
+	public final static int TICKETING = 141; // 예매 코드
 	
 	public final static int MEMBER_BROWSER = 100; // 회원 페이지 코드
 	public final static int INFOMENU = 101; // 회원관리 메뉴 페이지 코드

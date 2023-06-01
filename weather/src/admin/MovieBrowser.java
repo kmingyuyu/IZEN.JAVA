@@ -8,7 +8,6 @@ import movie_info.*;
 import utils.Define;
 
 public class MovieBrowser {
-	Map<Movie_Default_Info , Movie_Detail_Info> movieList = cgv.getMovieList();
 	Scanner scanner = new Scanner(System.in);
 	static CGV cgv = CGV.getTotal();
 	
@@ -40,18 +39,28 @@ public class MovieBrowser {
 	}
 	
 	public void menuChoice() {
-		for(Entry<Movie_Default_Info, Movie_Detail_Info> default_Movie : movieList.entrySet()) {
-			if(menu.equals("1")) {
-				num +=1;
-				if(default_Movie.getValue().getOpeningdate().isBefore(n)) {moiveList(default_Movie , num);}
-			}
-			if(menu.equals("2")) {
-				num +=1;
-				if(default_Movie.getValue().getOpeningdate().isAfter(n)) {moiveList(default_Movie , num);}	
-			}
+		ArrayList<Movie_Default_Info> movie_Default = cgv.getMovieList();
+		for(Movie_Default_Info def : movie_Default) {
+			ArrayList<Movie_Detail_Info> movie_Detail = def.getMovie_Detail(); 
+			for(Movie_Detail_Info det : movie_Detail ) {
+				if(menu.equals("1")) {
+					num +=1;
+					if(det.getOpeningdate().isBefore(n)) {moiveList(def , det , num);}
+				}
+				if(menu.equals("2")) {
+					num +=1;
+					if(det.getOpeningdate().isAfter(n)) {moiveList(def , det ,  num);}	
+				}
+				}
+				
+				
 			}
 		num = 0;
-	}
+		} 
+		
+		
+		
+		
 			
 		
 			
@@ -67,7 +76,7 @@ public class MovieBrowser {
 				menu = scanner.next();
 				switch (menu) {
 				case "1": 
-					if(cgv.isLogin() == true) { MovieChoice();}
+					if(cgv.isLogin() == true) { return MovieChoice();}
 					else {
 						System.out.println("예매는 로그인시 가능합니다 로그인 하시겠습니까?");
 						System.out.println("\t|1> 로그인\t|2> 나가기");
@@ -89,9 +98,11 @@ public class MovieBrowser {
 		System.out.println("\t* 예매하실 영화번호를 입력해주세요 *");
 		while(true) {
 			num = scanner.nextInt();
-			if(movieList.size() >= num) {
+			ArrayList<Movie_Default_Info> movie_Default = cgv.getMovieList();
+			if(movie_Default.size() >= num) {
 				System.out.println(" * 예매 페이지로 이동합니다 * ");
-				return Define.TICKET_TIMECHOICE;
+				cgv.addmovieTemp(movie_Default.get(num-1));
+				return Define.TICKETING;
 			}
 			else {
 				System.err.println(" * 없는 영화번호 입니다 다시 입력해주세요 * ");
@@ -116,11 +127,11 @@ public class MovieBrowser {
 	}
 
 
- 	public void moiveList(Entry<Movie_Default_Info, Movie_Detail_Info> default_Movie , int num) {
- 			System.out.println("< " + num + " >" + "\t[ " + default_Movie.getKey().getTitle() + " ] " + "("+ default_Movie.getValue().getAgeGroup() + " 세)");
- 	 		System.out.println("  개봉날짜: " + default_Movie.getValue().getOpeningdate() + " | 예매율: " + default_Movie.getValue().getReservationRate() + " % " );
- 	 		System.out.println("  장르: " + default_Movie.getKey().getGenre() + " | " + "국가: " + default_Movie.getKey().getCountry());
- 	 		System.out.println("  상영시간: " + default_Movie.getValue().getRunningTime() + "분");
+ 	public void moiveList(Movie_Default_Info def, Movie_Detail_Info det , int num) {
+ 			System.out.println("< " + num + " >" + "\t[ " + def.getTitle() + " ] " + "("+ det.getAgeGroup() + " 세)");
+ 	 		System.out.println("  개봉날짜: " + det.getOpeningdate() + " | 예매율: " + det.getReservationRate() + " % " );
+ 	 		System.out.println("  장르: " + def.getGenre() + " | " + "국가: " + def.getCountry());
+ 	 		System.out.println("  상영시간: " + det.getRunningTime() + "분");
  	 		System.out.println("--------------------------------------------------");
  	
 

@@ -23,27 +23,25 @@ import member.*
 		AdminPersonBrowser d = new AdminPersonBrowser();
 		MemberPersonBrowser t = new MemberPersonBrowser();
 		MemberBrowser dd = new MemberBrowser();
-		Person_Info person_Info = new Person_Info
-				("sky2" , "비밀번호" , "이름" , "생년월일" , "핸드폰번호");
+		
 //	싱글톤 CGV에 회원정보 넣어줌
-	cgv.put_personList("sky2", person_Info);
 		
-//		dd.memberMainView();
-	Map<Movie_Default_Info , Movie_Detail_Info> movieList = cgv.getMovieList();
+		dd.memberMainView();
+	ArrayList<Movie_Default_Info> movie_Default = cgv.getMovieList();
+	cgv.addmovieTemp(movie_Default.get(1));
+	Person_Info person =new Person_Info();
+	person.setMember_ID("skyjangkin");
+	person.setMember_Password("");
+	person.setMember_PhoneNumber("01071280150");
 	
-	for(int i=0; i<movieList.size(); i++) {
-		System.out.println(movieList.keySet());
-	}
+	Map<String, Person_Info> personList = cgv.getPersonList();
+	cgv.put_personList(person.getMember_ID(), person);
 	
-	
-	
-	for(Entry<Movie_Default_Info, Movie_Detail_Info> default_Movie : movieList.entrySet()) {
-		System.out.println(default_Movie.toString());
-	};
-	
-	dd.memberMainView();
-		
+//	String id = "skyjangkin";
 
+	
+	
+	start.mainView();
 	
 		}
 		
@@ -68,13 +66,15 @@ import member.*
 	inputCalender(detailInfo1);
 	inputCalender(detailInfo2);
 	inputCalender(detailInfo3);
+	
+	defaultInfo1.addmovie_Detail(detailInfo1);
+	defaultInfo2.addmovie_Detail(detailInfo2);
+	defaultInfo3.addmovie_Detail(detailInfo3);
+	
 	 
-	
-	
-	cgv.put_MovieList( defaultInfo1 , detailInfo1);
-	cgv.put_MovieList( defaultInfo2 , detailInfo2);
-	cgv.put_MovieList( defaultInfo3 , detailInfo3);
-	
+	cgv.addmovieList(defaultInfo1);
+	cgv.addmovieList(defaultInfo2);
+	cgv.addmovieList(defaultInfo3);
 	
 	}
 	

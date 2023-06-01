@@ -4,53 +4,103 @@ import java.util.*;
 import java.time.*;
 
 public class Person_Ticket_Info {
-	private LocalDateTime NowDate; //예매한 시간
-	private LocalDateTime MovieDate; //영화 시작시간
-	private String[][] seat ; // 영화관 좌석
+	private LocalDateTime time; //예매한 시간
+	private int People ; //인원수
+	private String cenema = "일반" ;
+	private String seat1 ; // 영화관 좌석 행
+	private int seat2 ; // 영화관 좌석 열
 	
 //	예매한 영화정보 담아줌
 	private ArrayList<Movie_Default_Info> movieList = new ArrayList<> ();
 	
 	
-	Person_Ticket_Info(LocalDateTime NowDate ,LocalDateTime MovieDate , String[][] seat) {
-		this.NowDate = NowDate;
-		this.MovieDate = MovieDate;
-		this.seat = seat;
-	}
 	
 	  public void addMovieList (Movie_Default_Info defaultInfo) {
 	    	movieList.add(defaultInfo);
 	    }  
 	
+	  
+	
 
-	public LocalDateTime getNowDate() {
-		return NowDate;
+
+	public String getCenema() {
+		return cenema;
 	}
 
 
-	public void setNowDate(LocalDateTime nowDate) {
-		NowDate = nowDate;
+
+
+
+	public void setCenema(String cenema) {
+		this.cenema = cenema;
 	}
 
 
-	public LocalDateTime getMovieDate() {
-		return MovieDate;
+
+
+
+	public LocalDateTime getTime() {
+		return time;
 	}
 
 
-	public void setMovieDate(LocalDateTime movieDate) {
-		MovieDate = movieDate;
+
+
+
+	public void setTime(LocalDateTime time) {
+		this.time = time;
 	}
 
 
-	public String[][] getSeat() {
-		return seat;
+
+
+
+	public int getPeople() {
+		return People;
 	}
 
 
-	public void setSeat(String[][] seat) {
-		this.seat = seat;
+
+
+
+	public void setPeople(int people) {
+		People = people;
 	}
+
+
+
+
+
+	public String getSeat1() {
+		return seat1;
+	}
+
+
+
+
+
+	public void setSeat1(String seat1) {
+		this.seat1 = seat1;
+	}
+
+
+
+
+
+	public int getSeat2() {
+		return seat2;
+	}
+
+
+
+
+
+	public void setSeat2(int seat2) {
+		this.seat2 = seat2;
+	}
+
+
+
 
 
 	public ArrayList<Movie_Default_Info> getMovieList() {

@@ -6,34 +6,52 @@ public class CGV {
 //	 싱글톤
     private static CGV instance = new CGV();
     
-    private boolean login = true  ; //로그인 상태
-    private String temp_ID = "sky2" ; // 아이디 확인
+    private boolean login = false  ; //로그인 상태
+    private String temp_ID  ; // 아이디 확인
     
-//  CGV에 영화 정보들을 넣어준다.
   
-  private Map<Movie_Default_Info, Movie_Detail_Info> movieList =new LinkedHashMap<>();
+//  CGV에 영화 정보들을 넣어준다. :ArrayList
+  private ArrayList<Movie_Default_Info> movieList = new ArrayList<>();  
+//	CGV에 회원 정보들을 넣어준다. :Map  
   private Map<String, Person_Info> personList =new HashMap<>();
+  
+  private ArrayList<Movie_Default_Info> movieTemp =new ArrayList<>();
 	
 //싱글톤 생성자
   private CGV() {}
   
-	
 //싱글톤 메소드
   public static CGV getTotal() {
- 	 if (instance == null) {
-			instance = new CGV();
-		}
-		return instance;
-	 }
-    
-    
+	  if (instance == null) {
+		  instance = new CGV();
+	  }
+	  return instance;
+  }
+  
+  
+  public ArrayList<Movie_Default_Info> getMovieTemp() {
+	return movieTemp;
+}
+
+//영화의 상세정보를 담는다
+  public void addmovieList(Movie_Default_Info movie_Default_Info) {
+	  movieList.add(movie_Default_Info);
+  }
+//  선택된 영화의 임시정보
+  public void addmovieTemp(Movie_Default_Info movie_Default_Info) {
+	  movieTemp.add(movie_Default_Info);
+  }
 	
-    public void put_MovieList (Movie_Default_Info movie_Default_Info , Movie_Detail_Info movie_Detail_Info) {
-    	movieList.put(movie_Default_Info , movie_Detail_Info );
-	}
-    public void put_personList (String ID , Person_Info person_Info) {
-    	personList.put(ID , person_Info);
-    }
+
+  public void put_personList (String ID , Person_Info person_Info) {
+	personList.put(ID , person_Info);
+  }
+  
+
+  public ArrayList<Movie_Default_Info> getMovieList() {
+	  return movieList;
+  }
+    
     
     public boolean isLogin() {
 		return login;
@@ -55,28 +73,11 @@ public class CGV {
 	}
 
 
-	
-
-
-
-	public Map<Movie_Default_Info, Movie_Detail_Info> getMovieList() {
-		return movieList;
-	}
-
-
-	public void setMovieList(Map<Movie_Default_Info, Movie_Detail_Info> movieList) {
-		this.movieList = movieList;
-	}
-
-
 	public Map<String, Person_Info> getPersonList() {
 		return personList;
 	}
 
 
-	public void setPersonList(Map<String, Person_Info> personList) {
-		this.personList = personList;
-	}
 
 
 
