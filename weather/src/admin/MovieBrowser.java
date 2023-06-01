@@ -15,7 +15,6 @@ public class MovieBrowser {
 	LocalDate n = LocalDate.now(); 
 	int num = 0; 
 	String menu ; // 스캐너 입력객체
-
 	
 	public int movieMenu() {
 		System.out.println("-----------------서비스를 선택해주세요------------------");
@@ -58,16 +57,6 @@ public class MovieBrowser {
 		num = 0;
 		} 
 		
-		
-		
-		
-			
-		
-			
-			
-
-
-	
 	public int playing_Movie() {
 			System.out.println("----------------------현재 상영중---------------------");
 			menuChoice();

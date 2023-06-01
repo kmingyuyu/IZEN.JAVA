@@ -4,12 +4,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import movie_info.*;
 import utils.Define;
+import seat.*;
 
 
 public class Ticketing {
 	static CGV cgv = CGV.getTotal();
 	Scanner scanner = new Scanner(System.in);
-	Person_Ticket_Info ticketing = new Person_Ticket_Info();
 	
 	String E_HH_mm = "MM-dd일 <E> : HH:mm";
 	String MM_dd = "MM-dd일 <E> ";
@@ -23,10 +23,11 @@ public class Ticketing {
 	String menu ; // 스캐너 입력객체
 	int num ; // 입력 객체
 	public int ticketing() {
+		Person_Ticket_Info ticketing = new Person_Ticket_Info();
 		System.out.println("--------------------예매를 진행합니다 ---------------------");
-		Time();
-		people();
-		Seat ();
+		Time(ticketing);
+		people(ticketing);
+		Seat (ticketing);
 		System.out.println(" * 완료 되었습니다 * ");
 		System.out.println("--------------------------------------------------");
 		ArrayList<Movie_Default_Info> default_Movie = cgv.getMovieTemp();
@@ -59,7 +60,7 @@ public class Ticketing {
 	
 	
 	
-	public void Time() {
+	public void Time(Person_Ticket_Info ticketing) {
 		System.out.println(" 날짜를 선택해주세요 ");
 		ArrayList<Movie_Default_Info> def = cgv.getMovieTemp();
 		Movie_Detail_Info det = def.get(0).getMovie_Detail().get(0);
@@ -84,7 +85,7 @@ public class Ticketing {
 	
 }
 
-	public void people() {
+	public void people(Person_Ticket_Info ticketing) {
 		System.out.println(" 인원 수를 입력해주세요 ");
 		while(true) {
 			num = scanner.nextInt();
@@ -98,17 +99,22 @@ public class Ticketing {
 	}
 	
 //	아직안함
-	public int Seat () {
+	public int Seat (Person_Ticket_Info ticketing) {
 		while(true) {
+			Default_Seat seat = new Default_Seat();
 			System.out.println(" |1> 일반관|2> IMAX|3> 3D|");
 			menu = scanner.next();
 			switch (menu) {
 			case "1":
-				
 				return Define.INFOMENU;
 			case "2":
+				seat = new Imax_Seat();
+				ticketing.setCenema("IMAX");
 				return Define.LOGOUT;
-			case "3":  return Define.MOVIEMENU;   
+			case "3":
+				seat = new ThreeD_Seat();
+				ticketing.setCenema("3D");
+				return Define.MOVIEMENU;   
 			default : System.err.println(" * 잘못 입력하셨습니다 다시 입력해주세요 *");			
 				}
 		}

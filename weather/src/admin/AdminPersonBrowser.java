@@ -14,8 +14,8 @@ public class AdminPersonBrowser {
 	
 	String menu;
 	int num = 0;
-	Person_Info person = new Person_Info();
 	public int join() {
+		Person_Info person = new Person_Info();
 		System.out.println("----------------------회원가입----------------------");
 		System.out.println("|1> 이미 회원이십니까? ( 로그인 창으로 이동 )");
 		System.out.println("|2> 메인 화면으로 이동");
@@ -24,11 +24,11 @@ public class AdminPersonBrowser {
 			if(j_Check.equals("1")) {return Define.LOGIN ;}
 			if(j_Check.equals("2")) {return Define.ADMIN_BROWSER ;}
 			System.out.println("--------------환영합니다! 정보를 입력해주세요-------------");
-			id();
-			pw();
-			name();
-			rrn();
-			phoneNum();
+			id(person);
+			pw(person);
+			name(person);
+			rrn(person);
+			phoneNum(person);
 			System.out.println(" 회원가입 하시겠습니까? ( Y / N ");
 			while(true) {
 				menu = scanner.next();
@@ -49,7 +49,7 @@ public class AdminPersonBrowser {
 			
 		
 //		아이디
-		public void id() {
+		public void id(Person_Info person) {
 			System.out.println("사용하실 아이디를 입력 해주세요. (영소문자 6자리 이상 12이내)");
 			while(true) {
 				menu = scanner.next();
@@ -70,7 +70,7 @@ public class AdminPersonBrowser {
 		}
 			
 //		비밀번호
-		public void pw() {
+		public void pw(Person_Info person) {
 			System.out.println("사용하실 비밀번호를 입력 해주세요. (영소문자 숫자포함 8자리 이상 14자리 이내)");
 			while(true) {
 				menu = scanner.next();
@@ -97,7 +97,7 @@ public class AdminPersonBrowser {
 		}
 			
 //		이름
-		public void name() {
+		public void name(Person_Info person) {
 			System.out.println("이름을 입력해주세요. ( 한글 )");
 			while(true) {
 				menu = scanner.next();
@@ -112,7 +112,7 @@ public class AdminPersonBrowser {
 		}
 			
 //			생년월일			
-			public void rrn() {
+			public void rrn(Person_Info person) {
 				System.out.println("생년월일을 입력해주세요. ( 6자리 )");
 				while(true) {
 					menu = scanner.next();
@@ -127,7 +127,7 @@ public class AdminPersonBrowser {
 			}
 			
 //			핸드폰번호
-			public void phoneNum() {
+			public void phoneNum(Person_Info person) {
 				System.out.println("핸드폰 번호를 입력해주세요. ( '-' 제외 )");
 				while(true) {
 					menu = scanner.next();
@@ -165,11 +165,9 @@ public class AdminPersonBrowser {
 		System.out.println(" 아니라면 아무키나 입력해주세요. ");
 		menu = scanner.next();
 		switch (menu) {
-		case "1":
-			return Define.JOIN;
-		case "2": 
-			return Define.ADMIN_BROWSER;
-		}
+		case "1": return Define.JOIN;
+		case "2": return Define.ADMIN_BROWSER;
+			}
 		
 		while(true) {
 			System.out.println(" 아이디를 입력해주세요");

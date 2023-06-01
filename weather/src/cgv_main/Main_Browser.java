@@ -11,7 +11,6 @@ import member.*
 ;public class Main_Browser {
 	Scanner scanner = new Scanner(System.in);
 	static CGV cgv = CGV.getTotal();
-	public String[][] seat = new String[5][9];
 	String menu ; // 스캐너 입력객체
 	
 	
@@ -26,7 +25,8 @@ import member.*
 		
 //	싱글톤 CGV에 회원정보 넣어줌
 		
-		dd.memberMainView();
+//		dd.memberMainView();
+//		start.mainView();
 	ArrayList<Movie_Default_Info> movie_Default = cgv.getMovieList();
 	cgv.addmovieTemp(movie_Default.get(1));
 	Person_Info person =new Person_Info();
@@ -41,10 +41,15 @@ import member.*
 
 	
 	
-	start.mainView();
-	
 		}
 		
+	
+	
+	
+	
+	
+	
+	
 		
 		
 	
