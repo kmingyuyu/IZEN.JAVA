@@ -11,7 +11,6 @@ public class MemberBrowser  {
 		adminBrowser adminbrowser = new adminBrowser();
 		MemberPersonBrowser personBrowser = new MemberPersonBrowser();
 		MovieBrowser movieBrowser = new MovieBrowser();
-		Ticketing ticketing = new Ticketing();
 		
 		int remote = Define.MEMBER_BROWSER;
 		while(true) {
@@ -37,8 +36,6 @@ public class MemberBrowser  {
 			case 31: remote = movieBrowser.playing_Movie();	// 3>무비차트 -> 1>현재상영중 화면
 				break;
 			case 32: remote = movieBrowser.opening_Movie();	// 3>무비차트 -> 2>개봉예정 화면
-				break;
-			case 141: remote = ticketing.ticketing();	//  예매 화면
 				break;
 			case 0: adminbrowser.mainView();	//  회원탈퇴/로그아웃시 비회원화면 으로 이동
 				break;

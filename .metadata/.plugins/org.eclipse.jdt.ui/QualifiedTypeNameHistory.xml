@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="Quiz.Nav"/>
     <fullyQualifiedTypeName name="ch06.sec13.exam02.pakage1.A"/>
     <fullyQualifiedTypeName name="ch07.sec6.package1.A"/>
     <fullyQualifiedTypeName name="Quiz.Ex"/>
@@ -56,8 +54,10 @@
     <fullyQualifiedTypeName name="movie_info.CGV"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="java.security.KeyStore.Entry"/>
-    <fullyQualifiedTypeName name="javax.sound.midi.SysexMessage"/>
     <fullyQualifiedTypeName name="utils.Define"/>
     <fullyQualifiedTypeName name="java.util.Map.Entry"/>
     <fullyQualifiedTypeName name="admin.MovieBrowser"/>
+    <fullyQualifiedTypeName name="javax.sound.midi.SysexMessage"/>
+    <fullyQualifiedTypeName name="member.Ticketing"/>
+    <fullyQualifiedTypeName name="movie_info.Person_Ticket_Info"/>
 </qualifiedTypeNameHistroy>

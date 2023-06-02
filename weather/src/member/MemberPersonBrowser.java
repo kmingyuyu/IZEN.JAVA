@@ -72,6 +72,9 @@ public class MemberPersonBrowser {
 		
 	
 	public int Info_Ticketing() {
+		System.out.println("----------------------예매 정보---------------------");
+		Map<String,  ArrayList<Person_Ticket_Info>> ticket = cgv.getTicketingList();
+		ticket.get(cgv.getTemp_ID()).get(0)
 		
 		
 		return Define.ADMIN_BROWSER;

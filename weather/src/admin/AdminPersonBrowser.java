@@ -105,7 +105,7 @@ public class AdminPersonBrowser {
 					System.err.println("양식에 맞지 않습니다. 다시 입력해주세요");
 					System.err.println("* 한글이름 입력해주세요. *");
 				}else {
-					person.setMember_ID(menu);
+					person.setMember_Name(menu);
 					break;
 				}
 			}

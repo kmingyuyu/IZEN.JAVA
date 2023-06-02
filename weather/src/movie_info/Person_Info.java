@@ -11,9 +11,6 @@ public class Person_Info {
 	
 //	생성자
 	
-		
-		
-		
 	
 
 

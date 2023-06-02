@@ -3,7 +3,7 @@ package cgv_main;
 import java.time.*;
 import java.util.*;
 import java.util.Map.Entry;
-
+import seat.*;
 import admin.*;
 import movie_info.*;
 import utils.Define;
@@ -27,22 +27,79 @@ import member.*
 		
 //		dd.memberMainView();
 //		start.mainView();
-	ArrayList<Movie_Default_Info> movie_Default = cgv.getMovieList();
-	cgv.addmovieTemp(movie_Default.get(1));
 	Person_Info person =new Person_Info();
 	person.setMember_ID("skyjangkin");
 	person.setMember_Password("");
 	person.setMember_PhoneNumber("01071280150");
 	
+	Movie_Default_Info defaultInfo1 = new Movie_Default_Info("분노의 질주-라이드 오어 다이" , "액션" , "미국");
+	Movie_Detail_Info detailInfo1 = new Movie_Detail_Info(12.5 , 141 , LocalDate.of(2023,05,17) , 15);
+	Movie_Default_Info defaultInfo2 = new Movie_Default_Info("남은 인생 10년" , "로맨스,멜로" , "일본");
+	Movie_Detail_Info detailInfo2 = new Movie_Detail_Info(5.6 , 124 , LocalDate.of(2023,05,24) , 12);
+	inputCalender(detailInfo1);
+	defaultInfo1.addmovie_Detail(detailInfo1);
+	cgv.addmovieList(defaultInfo1);
+	
+	inputCalender(detailInfo2);
+	defaultInfo1.addmovie_Detail(detailInfo2);
+	cgv.addmovieList(defaultInfo2);
+	
+	ArrayList<Movie_Default_Info> movie_Default = cgv.getMovieList();
+	
+	
 	Map<String, Person_Info> personList = cgv.getPersonList();
 	cgv.put_personList(person.getMember_ID(), person);
 	
-//	String id = "skyjangkin";
-
+	
+	int num = 1;
+	
+	
+	LocalDateTime n = LocalDateTime.now();
+	Person_Ticket_Info per = new Person_Ticket_Info(n, "일반" , 'A' , 1);
+	Person_Ticket_Info per2 = new Person_Ticket_Info(n, "일반" , 'A' , 1);
+			
+			per.addMovieList(movie_Default.get(num - 1));
+			per.addMovieList(movie_Default.get(num));
+			
+			
+			;
+	ArrayList<Person_Ticket_Info> ticket = new ArrayList<> ();
+	 ticket.add(per);
+	cgv.put_ticketingList(cgv.getTemp_ID(), ticket);
+	
+	
+	
+	
+	Map<String,  ArrayList<Person_Ticket_Info>> tt = cgv.getTicketingList();
+	ArrayList<Person_Ticket_Info> top = tt.get(cgv.getTemp_ID());
+	System.out.println("-----예매정보-----");
+	for(Person_Ticket_Info top2 : top) {
+		ArrayList<Movie_Default_Info> dtd = top2.getMovieList();
+		for(Movie_Default_Info dd5 : dtd ) {
+			ArrayList<Movie_Detail_Info> def = dd5.getMovie_Detail();
+			for(Movie_Detail_Info def55 : def) {
+				
+				System.out.println("제목" + dd5.getTitle());
+				System.out.println("국가" +dd5.getCountry());
+				System.out.println("연령" +dd5.getGenre());
+				System.out.println("개봉날짜" + def55.getOpeningdate() );
+				System.out.println("개봉날짜" + def55.getOpeningdate() );
+				
+			}
+				
+		}
+		System.out.println(top2.getMovieList());
+	}
+	for(int i=0; i<tt.get(cgv.getTemp_ID()).size(); i++) {
+	}
+	
+	
+	
 	
 	
 		}
 		
+
 	
 	
 	

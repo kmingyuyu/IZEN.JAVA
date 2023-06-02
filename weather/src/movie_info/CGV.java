@@ -1,21 +1,20 @@
 package movie_info;
 
 import java.util.*;
-
 public class CGV {
 //	 싱글톤
     private static CGV instance = new CGV();
     
-    private boolean login = false  ; //로그인 상태
-    private String temp_ID  ; // 아이디 확인
+    private boolean login = true  ; //로그인 상태
+    private String temp_ID ="skyjangkin" ; // 아이디 확인
     
   
 //  CGV에 영화 정보들을 넣어준다. :ArrayList
   private ArrayList<Movie_Default_Info> movieList = new ArrayList<>();  
 //	CGV에 회원 정보들을 넣어준다. :Map  
   private Map<String, Person_Info> personList =new HashMap<>();
-  
-  private ArrayList<Movie_Default_Info> movieTemp =new ArrayList<>();
+//  회원들의 예매 목록
+  private Map<String, ArrayList<Person_Ticket_Info>> ticketingList =new HashMap<>();
 	
 //싱글톤 생성자
   private CGV() {}
@@ -29,23 +28,26 @@ public class CGV {
   }
   
   
-  public ArrayList<Movie_Default_Info> getMovieTemp() {
-	return movieTemp;
+
+public Map<String,  ArrayList<Person_Ticket_Info>> getTicketingList() {
+	return ticketingList;
 }
 
-//영화의 상세정보를 담는다
+//영화의 상세정보를 담는다.
   public void addmovieList(Movie_Default_Info movie_Default_Info) {
 	  movieList.add(movie_Default_Info);
   }
-//  선택된 영화의 임시정보
-  public void addmovieTemp(Movie_Default_Info movie_Default_Info) {
-	  movieTemp.add(movie_Default_Info);
-  }
 	
-
+// 회원들의 정보를 담는다.
   public void put_personList (String ID , Person_Info person_Info) {
-	personList.put(ID , person_Info);
+	  personList.put(ID , person_Info);
   }
+  
+// 회원들의 예매정보를 담는다.
+  public void put_ticketingList (String ID , ArrayList<Person_Ticket_Info> ticket) {
+	  ticketingList.put(ID , ticket);
+  }
+  
   
 
   public ArrayList<Movie_Default_Info> getMovieList() {

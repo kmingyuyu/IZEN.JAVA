@@ -5,30 +5,43 @@ import java.time.*;
 
 public class Person_Ticket_Info {
 	private LocalDateTime time; //예매한 시간
-	private int People ; //인원수
-	private String cenema = "일반" ;
-	private String seat1 ; // 영화관 좌석 행
+	private String cenema = "일반" ; // 관 정보 기본: 일반
+	private char seat1 ; // 영화관 좌석 행
 	private int seat2 ; // 영화관 좌석 열
+	
+	
+	public Person_Ticket_Info (LocalDateTime time , String cenema, char seat1 , int seat2 ) {
+		this.time = time;
+		this.cenema = cenema ;
+		this.seat1 = seat1;
+		this.seat2 = seat2;
+	}
+	
+	
 	
 //	예매한 영화정보 담아줌
 	private ArrayList<Movie_Default_Info> movieList = new ArrayList<> ();
 	
 	
-	
-	  public void addMovieList (Movie_Default_Info defaultInfo) {
-	    	movieList.add(defaultInfo);
-	    }  
-	
-	  
-	
+	 public void addMovieList (Movie_Default_Info defaultInfo) {
+	    movieList.add(defaultInfo);
+	   }  
 
 
 	public String getCenema() {
 		return cenema;
 	}
 
+	
+	
 
 
+
+
+	@Override
+	public String toString() {
+		return this.time + this.cenema + this.seat1 + this.seat2 ;
+	}
 
 
 	public void setCenema(String cenema) {
@@ -53,25 +66,7 @@ public class Person_Ticket_Info {
 
 
 
-
-
-	public int getPeople() {
-		return People;
-	}
-
-
-
-
-
-	public void setPeople(int people) {
-		People = people;
-	}
-
-
-
-
-
-	public String getSeat1() {
+	public char getSeat1() {
 		return seat1;
 	}
 
@@ -79,7 +74,7 @@ public class Person_Ticket_Info {
 
 
 
-	public void setSeat1(String seat1) {
+	public void setSeat1(char seat1) {
 		this.seat1 = seat1;
 	}
 
