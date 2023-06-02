@@ -10,15 +10,15 @@ public class Movie_Detail_Info  {
 	
 	private LocalDateTime[] movieSchedule; // 영화예매시간
 	
-	public Movie_Detail_Info (double reservationRate ,int runningTime ,LocalDate openingdate ,int ageGroup) {
-		this.reservationRate = reservationRate;
-		this.runningTime = runningTime;
-		this.openingdate = openingdate;
-		this.ageGroup = ageGroup;
-		
-	}
+//	 생성자
+	 public Movie_Detail_Info( double reservationRate ,int runningTime ,LocalDate openingdate , int ageGroup) {
+    	 this.reservationRate = reservationRate;
+    	 this.runningTime = runningTime;
+    	 this.openingdate = openingdate;
+    	 this.ageGroup = ageGroup;
+    	 
+     }
 	
-
 
 	@Override
 	public String toString() {
@@ -29,6 +29,7 @@ public class Movie_Detail_Info  {
 
 
 
+//	get /set
 
 	public LocalDateTime[] getMovieSchedule() {
 		return movieSchedule;
@@ -43,7 +44,6 @@ public class Movie_Detail_Info  {
 	}
 
 
-
 	public void setReservationRate(double reservationRate) {
 		this.reservationRate = reservationRate;
 	}
@@ -55,11 +55,9 @@ public class Movie_Detail_Info  {
 	}
 
 
-
 	public void setRunningTime(int runningTime) {
 		this.runningTime = runningTime;
 	}
-
 
 
 	public LocalDate getOpeningdate() {
@@ -88,7 +86,6 @@ public class Movie_Detail_Info  {
 
 	
 	
-//	get /set
 	
 	
 	

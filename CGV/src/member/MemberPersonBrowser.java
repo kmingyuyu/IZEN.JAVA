@@ -1,7 +1,7 @@
 package member;
 
+import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.regex.Pattern;
 
 import movie_info.*;
 import utils.Define;
@@ -12,9 +12,8 @@ public class MemberPersonBrowser {
 	
 	String menu ; // 스캐너 입력객체
 	
-	
+//	회원관리 입력시 비밀번호확인
 	public int pwCheck() {
-		System.out.println("----------------------회원 관리창---------------------");
 		System.out.println("\t* 비밀번호를 입력해주세요 |> N 뒤로가기 * ");
 		while(true) {
 			menu = scanner.next();
@@ -33,7 +32,9 @@ public class MemberPersonBrowser {
 		}
 	}
 	
+//	비밀번호 확인받고 회원관리창
 	public int infoMenu() {
+		System.out.println("----------------------회원 관리창--------------------");
 		System.out.println("-----------------서비스를 선택해주세요------------------");
 		System.out.println("--------|1> 회원 정보|2> 예매내역|3> 회원탈퇴|-----------");
 		System.out.println("-------------------|4> 나가기|----------------------");
@@ -49,6 +50,7 @@ public class MemberPersonBrowser {
 		}
 	}
 	
+//	회원정보
 	public int Info_Person() {
 		System.out.println("----------------------회원 정보---------------------");
 		Map<String, Person_Info> personList = cgv.getPersonList();
@@ -70,17 +72,59 @@ public class MemberPersonBrowser {
 			}
 		}
 		
-	
+//	try/catch 사용한 이유 : 예매 내용이 없을시 에러발생 -> catch에 예매내역없음 출력
+//	예매내역
 	public int Info_Ticketing() {
+		
+		String MM_dd = "MM-dd일 <E> ";
+		String HH_mm = "HH:mm";
+		DateTimeFormatter MM_dd_format = DateTimeFormatter.ofPattern(MM_dd);
+		DateTimeFormatter HH_mm_format = DateTimeFormatter.ofPattern(HH_mm);
+		
 		System.out.println("----------------------예매 정보---------------------");
-		Map<String,  ArrayList<Person_Ticket_Info>> ticket = cgv.getTicketingList();
-		ticket.get(cgv.getTemp_ID()).get(0)
+		try {
+			Map<String,  ArrayList<Person_Ticket_Info>> ticket = cgv.getTicketingList();
+			ArrayList<Person_Ticket_Info> personList = ticket.get(cgv.getTemp_ID());
+			for(Person_Ticket_Info ticketing : personList) {
+				ArrayList<Movie_Default_Info> defaultList = ticketing.getMovieList();
+				for(Movie_Default_Info def : defaultList ) {
+					ArrayList<Movie_Detail_Info> detaiList = def.getMovie_Detail();
+					for(Movie_Detail_Info det : detaiList) { 
+						System.out.println("\t[ " + def.getTitle() + " ] " + "(" + det.getAgeGroup() + " 세)");
+						System.out.println("  개봉날짜: " + det.getOpeningdate() + " | 상영시간: " + det.getRunningTime() + "분");
+						System.out.println("  장르: " + def.getGenre() + " | " + "국가: " + def.getCountry());
+						System.out.println("");
+						System.out.println(
+								"  시간: " + ticketing.getTime().format(MM_dd_format) + " " + ticketing.getTime().format(HH_mm_format)
+								+ " ~ " + ticketing.getTime().plusMinutes(det.getRunningTime()).format(HH_mm_format));
+						System.out.println(
+								"  " + ticketing.getCenema() + "관: " + ticketing.getSeat1() + "열 " + ticketing.getSeat2() + "번");
+						System.out.println("--------------------------------------------------");
+					}
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println(" * 예매 내역이 없습니다  *  ");
+		}
+		System.out.println(" 뒤로 가시겠습니까? ( Y )  ");
+		while(true) {
+			menu = scanner.next();
+			switch (menu) {
+			case "Y" , "y": 
+				System.out.println("* 회원관리 창으로 이동합니다 *");
+				return Define.INFOMENU;
+			default : System.err.println(" * 잘못 입력하셨습니다 다시 입력해주세요 * ");
+			}
+			}
 		
 		
-		return Define.ADMIN_BROWSER;
+	
+		
+	
 	}
 	
-	
+//	회원탈퇴
 	public int Info_Secession() {
 		System.out.println(" * 회원 탈퇴를 진행합니다 *  ");
 		System.out.println(" 가입하신 핸드폰 번호를 입력해주세요");
@@ -96,7 +140,7 @@ public class MemberPersonBrowser {
 					System.err.println(" * 5번 이상 틀리셨습니다 비밀번호 확인 창으로 이동합니다 * ");
 					return Define.PW_CHECK;
 				}else{
-					System.err.println(" * 가입하신 번호가 없습니다 다시 입력해주세요 * ");
+					System.err.println(" * 가입하신 번호가 아닙니다 다시 입력해주세요 (5회 이상 틀릴시 비밀번호 확인창으로 이동) * ");
 					}	
 			}
 			
@@ -116,7 +160,7 @@ public class MemberPersonBrowser {
 					return Define.PW_CHECK;
 				}
 				else{
-					System.err.println(" * 인증번호가 틀립니다 다시 입력해주세요 * ");
+					System.err.println(" * 인증번호가 틀립니다 다시 입력해주세요 (5회 이상 틀릴시 비밀번호 확인창으로 이동) * ");
 					}	
 			}
 			System.out.println("\n 회원 탈퇴 하시겠습니까? ( Y / N )");
@@ -139,7 +183,7 @@ public class MemberPersonBrowser {
 		}
 	}
 	
-	
+//	로그아웃
 	public int logout() {
 		System.out.println(" 로그아웃 하시겠습니까? ( Y / N )  ");
 		while(true) {
@@ -157,6 +201,8 @@ public class MemberPersonBrowser {
 			}
 		}
 		}
+	 
+	
 	
 	
 }

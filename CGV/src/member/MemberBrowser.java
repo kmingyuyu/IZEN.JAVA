@@ -3,12 +3,16 @@ package member;
 import utils.Define;
 import java.util.*;
 import admin.*;
+import movie_info.CGV;
+import movie_info.Person_Info;
 
 public class MemberBrowser  {
 	Scanner scanner = new Scanner(System.in);
 	
-	public String memberMainView() {
-		adminBrowser adminbrowser = new adminBrowser();
+	
+//	회원가입/로그인시 실행 return으로 움직임
+	public String memberMainView() throws Exception {
+		AdminBrowser adminbrowser = new AdminBrowser();
 		MemberPersonBrowser personBrowser = new MemberPersonBrowser();
 		MovieBrowser movieBrowser = new MovieBrowser();
 		
@@ -43,9 +47,12 @@ public class MemberBrowser  {
 			}
 	}
 	
+//	회원 메인화면
 	public int memberView() {
+		CGV cgv = CGV.getTotal();
+		Map<String, Person_Info> personList = cgv.getPersonList();
 		System.out.println("--------------------------------------------------");
-		System.out.println("------------안녕하세요 cgv 인천점 입니다!---------------");
+		System.out.println("--------안녕하세요 " + personList.get(cgv.getTemp_ID()).getMember_Name()+  " 님! cgv 인천점 입니다!-----------");
 		System.out.println("--------------------------------------------------");
 		System.out.println("-----------------서비스를 선택해주세요------------------");
 		System.out.println("----------|1> 회원관리|2> 로그아웃|3> 무비차트-----------");

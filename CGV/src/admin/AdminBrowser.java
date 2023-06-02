@@ -4,10 +4,12 @@ import java.util.*;
 import utils.Define;
 import member.*;
 
-public class adminBrowser {
+public class AdminBrowser {
 	Scanner scanner = new Scanner(System.in);
 	
-	public String mainView() {
+	
+//	시작 메소드 return 값으로 메소드 이동함
+	public String mainView() throws Exception {
 		AdminPersonBrowser personBrowser = new AdminPersonBrowser();
 		MovieBrowser movieBrowser = new MovieBrowser();
 		MemberBrowser memberBrowser = new MemberBrowser();
@@ -35,7 +37,7 @@ public class adminBrowser {
 			}
 		}
 		
-			
+//	비회원 메인화면
 	public int adminView () {
 		while (true) {
 			System.out.println("--------------------------------------------------");

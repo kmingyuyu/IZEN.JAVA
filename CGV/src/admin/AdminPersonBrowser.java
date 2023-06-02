@@ -11,9 +11,10 @@ public class AdminPersonBrowser {
 	Scanner scanner = new Scanner(System.in);
 	static CGV cgv = CGV.getTotal();
 	
-	
 	String menu;
 	int num = 0;
+	
+//	회원가입
 	public int join() {
 		Person_Info person = new Person_Info();
 		System.out.println("----------------------회원가입----------------------");
@@ -29,7 +30,7 @@ public class AdminPersonBrowser {
 			name(person);
 			rrn(person);
 			phoneNum(person);
-			System.out.println(" 회원가입 하시겠습니까? ( Y / N ");
+			System.out.println(" 회원가입 하시겠습니까? ( Y / N ) ");
 			while(true) {
 				menu = scanner.next();
 				switch (menu) {
@@ -37,10 +38,10 @@ public class AdminPersonBrowser {
 					cgv.put_personList(person.getMember_ID(), person);
 					cgv.setLogin(true);
 					cgv.setTemp_ID(person.getMember_ID());
-					System.out.println(person.getMember_Name() + " 님 환영합니다!" +" 회원가입이 완료되었습니다");
+					System.out.println(" * 회원가입이 완료 되었습니다 * ");
 					return Define.MEMBER_BROWSER;
 				case "n" , "N":
-					System.out.println(" *메인화면 으로 이동합니다 *");
+					System.out.println(" * 메인화면 으로 이동합니다 * ");
 					return Define.ADMIN_BROWSER;
 				default : System.err.println(" * 잘못 입력하셨습니다 다시 입력해주세요 *");			
 					}
@@ -157,7 +158,7 @@ public class AdminPersonBrowser {
 			}
 
 		
-	
+//	로그인
 	public int login() {
 		System.out.println("----------------------로그인----------------------");
 		System.out.println("|1> 회원이 아니십니까? ( 회원가입 창으로 이동 )");

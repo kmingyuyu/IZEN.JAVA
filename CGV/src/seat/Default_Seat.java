@@ -1,18 +1,13 @@
 package seat;
 
 import java.util.Scanner;
-
-
-import movie_info.CGV;
 import movie_info.Person_Ticket_Info;
 
 public class Default_Seat {
-	static CGV cgv = CGV.getTotal();
 	Scanner scanner = new Scanner(System.in);
-	String strColumn;
-	int rowNum;
-	char inputColumn;
-	
+	private String strColumn;
+	private int rowNum;
+	private char inputColumn;
 	
 	
 	public void screen() {
@@ -45,7 +40,7 @@ public class Default_Seat {
 		while(true) {
 			strColumn = scanner.next();	
 			inputColumn = strColumn.trim().charAt(0);
-			if(inputColumn < 65 || inputColumn > 74) {
+			if((inputColumn < 65 || inputColumn > 73)) {
 				System.err.println(" * 잘못 입력하셨습니다 다시 입력해주세요 *");
 			}
 			else {
@@ -54,9 +49,12 @@ public class Default_Seat {
 			}
 			
 		}
-	}	
+	}
+	
+	
+	
 		
-		public void seat2 (Person_Ticket_Info ticketing) {
+	public void seat2(Person_Ticket_Info ticketing) {
 		System.out.println(" * 예약하실 좌석의 행 번호를 입력해주세요 * ");
 		while(true) {
 	        rowNum = scanner.nextInt();
@@ -64,18 +62,13 @@ public class Default_Seat {
 	            System.err.println(" * 잘못 입력하셨습니다 다시 입력해주세요 *");
 	        }
 	        else {
+	        	System.out.println(" 선택하신 좌석은 : " +inputColumn+ " 열 / " + rowNum + " 번입니다");
 	        	ticketing.setSeat2(rowNum);
-	        	System.out.println("선택하신 좌석은 : " +inputColumn+ " 열이고 " + rowNum + " 행입니다");
 	        	break;
 	        }
 		}
-	}	
-	
 		
-		
-		
-		
-		
+	}
 		
 		
 }

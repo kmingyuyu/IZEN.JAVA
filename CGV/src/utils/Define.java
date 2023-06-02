@@ -2,8 +2,7 @@ package utils;
 
 public class Define {
 
-//	영화 장르 
-	
+//	리턴 번호 상수
 	public final static int EXIT = -1; // 나가기 코드
 	public final static int ADMIN_BROWSER = 0; // 비회원 페이지 코드
 	public final static int JOIN = 1; // 회원가입 페이지 코드

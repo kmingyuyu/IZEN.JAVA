@@ -9,38 +9,24 @@ public class Person_Ticket_Info {
 	private char seat1 ; // 영화관 좌석 행
 	private int seat2 ; // 영화관 좌석 열
 	
-	
-	public Person_Ticket_Info (LocalDateTime time , String cenema, char seat1 , int seat2 ) {
-		this.time = time;
-		this.cenema = cenema ;
-		this.seat1 = seat1;
-		this.seat2 = seat2;
-	}
-	
-	
-	
-//	예매한 영화정보 담아줌
+//  예매한 영화정보 담는 메소드	
 	private ArrayList<Movie_Default_Info> movieList = new ArrayList<> ();
 	
 	
+//	예매한 영화정보 담아줌
 	 public void addMovieList (Movie_Default_Info defaultInfo) {
 	    movieList.add(defaultInfo);
 	   }  
 
-
+	 @Override
+		public String toString() {
+			return this.time + this.cenema + this.seat1 + this.seat2 ;
+		}
+	 
+	 
+//  get/set
 	public String getCenema() {
 		return cenema;
-	}
-
-	
-	
-
-
-
-
-	@Override
-	public String toString() {
-		return this.time + this.cenema + this.seat1 + this.seat2 ;
 	}
 
 
@@ -49,15 +35,9 @@ public class Person_Ticket_Info {
 	}
 
 
-
-
-
 	public LocalDateTime getTime() {
 		return time;
 	}
-
-
-
 
 
 	public void setTime(LocalDateTime time) {
@@ -65,13 +45,9 @@ public class Person_Ticket_Info {
 	}
 
 
-
 	public char getSeat1() {
 		return seat1;
 	}
-
-
-
 
 
 	public void setSeat1(char seat1) {
@@ -79,23 +55,13 @@ public class Person_Ticket_Info {
 	}
 
 
-
-
-
 	public int getSeat2() {
 		return seat2;
 	}
 
-
-
-
-
 	public void setSeat2(int seat2) {
 		this.seat2 = seat2;
 	}
-
-
-
 
 
 	public ArrayList<Movie_Default_Info> getMovieList() {
@@ -106,7 +72,9 @@ public class Person_Ticket_Info {
 	public void setMovieList(ArrayList<Movie_Default_Info> movieList) {
 		this.movieList = movieList;
 	}
+
 	
+
 	
 	
 }

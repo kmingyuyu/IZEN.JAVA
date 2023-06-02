@@ -1,19 +1,17 @@
 package seat;
 
 import java.util.Scanner;
-
 import movie_info.Person_Ticket_Info;
 
-public class Imax_Seat extends Default_Seat {
+public class ThreeD_Seat extends Default_Seat {
 	Scanner scanner = new Scanner(System.in);
-	String strColumn;
-	int rowNum;
-	char inputColumn;
-	
-	
+	private String strColumn;
+	private int rowNum;
+	private char inputColumn;
+
 	@Override
 	public void screen() {
-		int [][] seats = new int[6][6];
+		int [][] seats = new int[5][5];
 		System.out.println("\n────────────────────────────────────SCREEN────────────────────────────────────\n");
 		for (int i = 0; i < seats.length; i++) {
 			System.out.print("\t[ "+(i+1)+" ]");
@@ -33,17 +31,16 @@ public class Imax_Seat extends Default_Seat {
 			System.out.println(" [ "+ (char)(i+65) +" ] 열");
 		}
 		System.out.println("\n───────────────────────────────────────────────────────────────────────────────");
-		System.out.println("선택하신 좌석은 : " +inputColumn+ " 열이고 " + rowNum + " 행입니다");
 		
 	}
-	
+
 	@Override
 	public void seat1(Person_Ticket_Info ticketing) {
-		System.out.println(ticketing.getCenema() + " 관 선택하셨습니다 ");
-		System.out.println(" * 예약하실 좌석의 열을 입력해주세요 *");
+		System.out.println(" * 예약하실 좌석의 열을 입력해주세요 (대문자로 입력해주세요) *");
 		while(true) {
 			strColumn = scanner.next();	
-			if(inputColumn < 65 || inputColumn > 74) {
+			inputColumn = strColumn.trim().charAt(0);
+			if(inputColumn < 65 || inputColumn > 69) {
 				System.err.println(" * 잘못 입력하셨습니다 다시 입력해주세요 *");
 			}
 			else {
@@ -54,23 +51,22 @@ public class Imax_Seat extends Default_Seat {
 			
 		}
 	}
-	
+
 	@Override
 	public void seat2(Person_Ticket_Info ticketing) {
 		System.out.println(" 예약하실 좌석의 행 번호를 입력해주세요 ");
 		while(true) {
 	        rowNum = scanner.nextInt();
-	        if(rowNum < 1 || rowNum > 7) {
+	        if(rowNum < 1 || rowNum > 6) {
 	            System.err.println(" * 잘못 입력하셨습니다 다시 입력해주세요 *");
 	        }
 	        else {
 	        	ticketing.setSeat2(rowNum);
-	        	System.out.println("선택하신 좌석은 : " +inputColumn+ " 열이고 " + rowNum + " 행입니다");
+	        	System.out.println(" 선택하신 좌석은 : " +inputColumn+ " 열 / " + rowNum + " 번입니다");
 	        	break;
 	        }
 		}
+		
 	}
-	
-	
-	
+
 }

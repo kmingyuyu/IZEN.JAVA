@@ -8,10 +8,6 @@ public class Person_Info {
 	private String member_RRN ; //회원 주민번호
 	private String member_PhoneNumber ; // 핸드폰 번호 
 	
-	
-//	생성자
-	
-	
 
 
 	@Override

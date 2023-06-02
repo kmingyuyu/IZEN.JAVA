@@ -1,5 +1,6 @@
 package member;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import movie_info.*;
@@ -19,7 +20,8 @@ public class Ticketing {
 
 	String menu; // 스캐너 입력객체
 	int num; // 입력 객체
-
+	
+//	예매시작
 	public int ticketing(Person_Ticket_Info ticketing) {
 		System.out.println("--------------------예매를 진행합니다 ---------------------");
 		Time(ticketing);
@@ -45,8 +47,8 @@ public class Ticketing {
 			switch (menu) {
 			case "y", "Y":
 				System.out.println(" * 예매 완료 되었습니다 * ");
-			 ArrayList<Person_Ticket_Info> ticket = new ArrayList<> ();
-			 ticket.add(ticketing);
+			 cgv.addticket(ticketing);
+			 ArrayList<Person_Ticket_Info> ticket =  cgv.getTicketing();
 				cgv.put_ticketingList(cgv.getTemp_ID(), ticket);
 				return Define.MOVIEMENU;
 			case "n", "N":
@@ -58,19 +60,24 @@ public class Ticketing {
 
 		}
 	}
-
+	
+//	날짜선택 
 	public void Time(Person_Ticket_Info ticketing) {
+		LocalDateTime newt = LocalDateTime.now();
 		System.out.println(" 날짜를 선택해주세요 ");
 		ArrayList<Movie_Default_Info> def = ticketing.getMovieList();
 		Movie_Detail_Info det = def.get(0).getMovie_Detail().get(0);
 		for (int i = 0, y = 1; i < det.getMovieSchedule().length; i++, y++) {
-			System.out.println("-----------------------------------");
-			System.out.println("< " + y + " > " + det.getMovieSchedule()[i].format(E_HH_mm_format));
+				System.out.println("-----------------------------------");
+				System.out.println("< " + y + " > " + det.getMovieSchedule()[i].format(E_HH_mm_format));
 		}
 		System.out.println("-----------------------------------");
 		while (true) {
 			num = scanner.nextInt();
-			if (det.getMovieSchedule().length < num) {
+			if (newt.isAfter(det.getMovieSchedule()[num])) {
+				System.out.println(" * 끝난 상영시간입니다 다시 입력해주세요  *");
+			}
+			else if (det.getMovieSchedule().length < num) {
 				System.err.println("* 없는 날짜입니다 다시 입력해주세요 *");
 			} else if (det.getMovieSchedule().length >= num) {
 				ticketing.setTime(det.getMovieSchedule()[num - 1]);
@@ -82,7 +89,7 @@ public class Ticketing {
 
 	}
 
-//	아직안함
+//	좌석선택
 	public void Seat(Person_Ticket_Info ticketing) {
 		Default_Seat seat = new Default_Seat();
 		while (true) {
@@ -101,8 +108,8 @@ public class Ticketing {
 				seat.seat2(ticketing);
 				break;
 			} else if (menu.equals("3")) {
-				seat = new Imax_Seat();
-				ticketing.setCenema("IMAX");
+				seat = new ThreeD_Seat();
+				ticketing.setCenema("3D");
 				seat.screen();
 				seat.seat1(ticketing);
 				seat.seat2(ticketing);
