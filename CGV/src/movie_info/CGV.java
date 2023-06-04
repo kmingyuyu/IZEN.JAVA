@@ -18,11 +18,8 @@ public class CGV {
 //	CGV에 회원 정보들을 넣어준다. :Map  
   private Map<String, Person_Info> personList =new HashMap<>();
   
-//  회원들의 예매 목록 ( 같은 키값으로 여러값을 넣기위해 ArrayList를 value로 넣음) : map
-  private Map<String, ArrayList<Person_Ticket_Info>> ticketingList =new HashMap<>();
-  
-//  중복 예매 (한 아이디가 두개 이상 예매 할수 있으므로 여기에 넣어준다.) : map
-  private ArrayList<Person_Ticket_Info> ticketing = new ArrayList<> ();
+//  회원들의 예매 목록 : map
+  private Map<Object, Person_Ticket_Info> ticketingList =new HashMap<>();
   
 	
 //싱글톤 생성자
@@ -38,9 +35,7 @@ public class CGV {
   
   
  
-  public void addticket (Person_Ticket_Info ticket) {
-	ticketing.add(ticket);
-  }
+
 
 //상영중인 영화를 담는다.
   public void addmovieList(Movie_Default_Info movie_Default_Info) {
@@ -58,17 +53,16 @@ public class CGV {
   }
   
 // 회원들의 예매정보를 담는다.
-  public void put_ticketingList (String ID , ArrayList<Person_Ticket_Info> ticket) {
+  public void put_ticketingList (Object ID ,  Person_Ticket_Info ticket) {
 	  ticketingList.put(ID , ticket);
   }
   
   
-  
-  public Map<String,  ArrayList<Person_Ticket_Info>> getTicketingList() {
-		return ticketingList;
-	}
-  
-  public ArrayList<Movie_Default_Info> getMovieList() {
+  public Map<Object, Person_Ticket_Info> getTicketingList() {
+	  return ticketingList;
+  }
+
+public ArrayList<Movie_Default_Info> getMovieList() {
 	  return movieList;
   }
     
@@ -101,12 +95,11 @@ public class CGV {
 		return commingsoonList;
 	}
 
-	 public ArrayList<Person_Ticket_Info> getTicketing() {
-			return ticketing;
-		}
+
+	
 
 
-
+ 
 
 
 	

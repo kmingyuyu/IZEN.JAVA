@@ -47,9 +47,13 @@ public class Ticketing {
 			switch (menu) {
 			case "y", "Y":
 				System.out.println(" * 예매 완료 되었습니다 * ");
-			 cgv.addticket(ticketing);
-			 ArrayList<Person_Ticket_Info> ticket =  cgv.getTicketing();
-				cgv.put_ticketingList(cgv.getTemp_ID(), ticket);
+			Map<Object, Person_Ticket_Info> ticket =  cgv.getTicketingList();
+			for(int num=0; num<=ticket.size(); num++) {
+				if(!ticket.containsKey(cgv.getTemp_ID() + num)) {
+			     cgv.put_ticketingList(cgv.getTemp_ID() + num, ticketing);
+			     break;
+				}
+			}
 				return Define.MOVIEMENU;
 			case "n", "N":
 				System.out.println(" * 처음화면 으로 이동합니다 * ");
@@ -74,12 +78,12 @@ public class Ticketing {
 		System.out.println("-----------------------------------");
 		while (true) {
 			num = scanner.nextInt();
-			if (newt.isAfter(det.getMovieSchedule()[num])) {
-				System.out.println(" * 끝난 상영시간입니다 다시 입력해주세요  *");
-			}
-			else if (det.getMovieSchedule().length < num) {
+			 if (det.getMovieSchedule().length < num) {
 				System.err.println("* 없는 날짜입니다 다시 입력해주세요 *");
-			} else if (det.getMovieSchedule().length >= num) {
+			 }else if (newt.isAfter(det.getMovieSchedule()[num-1])) {
+				System.out.println(" * 끝난 상영시간입니다 다시 입력해주세요  *");
+				}
+			 else if (det.getMovieSchedule().length >= num) {
 				ticketing.setTime(det.getMovieSchedule()[num - 1]);
 				break;
 			} else {

@@ -72,7 +72,7 @@ public class MemberPersonBrowser {
 			}
 		}
 		
-//	try/catch 사용한 이유 : 예매 내용이 없을시 에러발생 -> catch에 예매내역없음 출력
+//	try/catch 사용한 이유 : 예매 내용이 없을시 에러발생 
 //	예매내역
 	public int Info_Ticketing() {
 		
@@ -81,11 +81,11 @@ public class MemberPersonBrowser {
 		DateTimeFormatter MM_dd_format = DateTimeFormatter.ofPattern(MM_dd);
 		DateTimeFormatter HH_mm_format = DateTimeFormatter.ofPattern(HH_mm);
 		
-		System.out.println("----------------------예매 정보---------------------");
 		try {
-			Map<String,  ArrayList<Person_Ticket_Info>> ticket = cgv.getTicketingList();
-			ArrayList<Person_Ticket_Info> personList = ticket.get(cgv.getTemp_ID());
-			for(Person_Ticket_Info ticketing : personList) {
+			System.out.println("----------------------예매 정보---------------------");
+			Map<Object, Person_Ticket_Info> ticket = cgv.getTicketingList();
+			for(int num=0; num<ticket.size(); num++) {
+				Person_Ticket_Info ticketing =  ticket.get(cgv.getTemp_ID() + num);
 				ArrayList<Movie_Default_Info> defaultList = ticketing.getMovieList();
 				for(Movie_Default_Info def : defaultList ) {
 					ArrayList<Movie_Detail_Info> detaiList = def.getMovie_Detail();
@@ -105,7 +105,6 @@ public class MemberPersonBrowser {
 			}
 			
 		} catch (Exception e) {
-			System.out.println(" * 예매 내역이 없습니다  *  ");
 		}
 		System.out.println(" 뒤로 가시겠습니까? ( Y )  ");
 		while(true) {
@@ -126,12 +125,12 @@ public class MemberPersonBrowser {
 	
 //	회원탈퇴
 	public int Info_Secession() {
+		Map<String, Person_Info> personList = cgv.getPersonList();
 		System.out.println(" * 회원 탈퇴를 진행합니다 *  ");
 		System.out.println(" 가입하신 핸드폰 번호를 입력해주세요");
 		while(true) {
 			for(int i=0; i<10; i++) {
 				menu = scanner.next();
-				Map<String, Person_Info> personList = cgv.getPersonList();
 				Person_Info personInfo = personList.get(cgv.getTemp_ID());
 				if(personInfo.getMember_PhoneNumber().equals(menu)) {
 					System.out.println(" * 확인 되셨습니다 * ");
@@ -164,11 +163,15 @@ public class MemberPersonBrowser {
 					}	
 			}
 			System.out.println("\n 회원 탈퇴 하시겠습니까? ( Y / N )");
+			System.out.println(" * 탈퇴 시 예매내역도 삭제 됩니다 * ");
 			while(true) {
 				menu = scanner.next();
 				switch (menu) {
 				case "y" , "Y":
-					Map<String, Person_Info> personList = cgv.getPersonList();
+					Map<Object, Person_Ticket_Info> ticket = cgv.getTicketingList();
+					for(int i=0; i<=ticket.size(); i++) {
+						ticket.remove(cgv.getTemp_ID()+ i);
+					}
 					personList.remove(cgv.getTemp_ID());
 					cgv.setLogin(false);
 					cgv.setTemp_ID(null);

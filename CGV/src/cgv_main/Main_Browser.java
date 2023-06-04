@@ -1,6 +1,8 @@
 package cgv_main;
 
 import java.time.*;
+
+
 import admin.*;
 import movie_info.*;
 
@@ -16,6 +18,13 @@ import movie_info.*;
 		AdminBrowser start = new AdminBrowser();
 		inputInfo();
 		start.mainView();
+		
+		
+		
+		
+		
+		
+		
 	} 
 	
 	public static void inputInfo() {
